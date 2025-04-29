@@ -26,7 +26,7 @@
             </nav>
         </div>
     </header>
-    
+
     <section class="hero">
         <div class="hero-content">
             <h1>Delicious Food Is Waiting For You</h1>
@@ -40,8 +40,8 @@
             <img src="mihun.png" alt="Hero Food">
         </div>
     </section>
-    
-  
+
+
   <!-- Main Content -->
     <main>
       <h1>Our Menu</h1>
@@ -164,7 +164,7 @@
       </div>
     </section>
   </main>
-  
+
   <section class="best-potatoes">
         <div class="potatoes-content">
             <h2>Our branch is now in Balikpapan city</h2>
@@ -175,7 +175,7 @@
             <img src="hero-food.png" alt="French Fries">
         </div>
     </section>
-  
+
   <!-- Footer Section -->
     <footer class="footer">
         <div class="container">
@@ -202,212 +202,210 @@
             </div>
         </div>
     </footer>
-  
     
-    
-        <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const addToCartButtons = document.querySelectorAll(".cart");
-            const cartBadge = document.getElementById("cart-badge");
-
-            // Fungsi untuk memperbarui badge keranjang
-            function updateCartBadge() {
-                const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-                cartBadge.textContent = cartItems.length; // Update jumlah item di badge
-
-                // Sembunyikan badge jika jumlah item adalah 0
-                if (cartItems.length === 0) {
-                    cartBadge.style.display = "none";
-                } else {
-                    cartBadge.style.display = "block";
-                }
-            }
-
-            // Update badge saat halaman dimuat
-            updateCartBadge();
-
-            // Add event listener to all "+" buttons
-            addToCartButtons.forEach((button) => {
-                button.addEventListener("click", () => {
-                    const productItem = button.closest(".product-item");
-                    const imgSrc = button.getAttribute("data-img"); // Get the image source
-                    const itemName = button.getAttribute("data-name"); // Get the item name
-                    const quantity = parseInt(productItem.querySelector(".quantity").value); // Get the quantity
-                    const price = parseInt(productItem.querySelector(".price").textContent.replace("Rp", "").replace(".", "")); // Get the price
-
-                    // Validate quantity
-                    if (isNaN(quantity) || quantity <= 0) {
-                        alert("Jumlah barang harus lebih dari 0!");
-                        return;
-                    }
-
-                    // Create a cart item object
-                    const cartItem = {
-                        imgSrc: imgSrc,
-                        itemName: itemName,
-                        quantity: quantity,
-                        price: price, // Add price to the cart item
-                    };
-
-                    // Retrieve existing cart items from localStorage
-                    let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-
-                    // Add the new item to the cart
-                    cartItems.push(cartItem);
-
-                    // Save the updated cart back to localStorage
-                    localStorage.setItem("cartItems", JSON.stringify(cartItems));
-
-                    // Update the cart badge
-                    updateCartBadge();
-
-                    // Animate the image to the cart
-                    animateImageToCart(imgSrc);
-                });
-            });
-
-            // Function to animate the image to the cart
-            function animateImageToCart(imgSrc) {
-                const img = document.createElement("img");
-                img.src = imgSrc;
-                img.style.position = "fixed";
-                img.style.width = "50px";
-                img.style.height = "50px";
-                img.style.borderRadius = "50%";
-                img.style.transition = "all 1s ease";
-                document.body.appendChild(img);
-
-                const cartIcon = document.querySelector(".fa-shopping-cart");
-                const cartIconRect = cartIcon.getBoundingClientRect();
-
-                const imgRect = img.getBoundingClientRect();
-                const startX = imgRect.left;
-                const startY = imgRect.top;
-                const endX = cartIconRect.left + cartIconRect.width / 2 - imgRect.width / 2;
-                const endY = cartIconRect.top + cartIconRect.height / 2 - imgRect.height / 2;
-
-                img.style.left = `${startX}px`;
-                img.style.top = `${startY}px`;
-
-                setTimeout(() => {
-                    img.style.left = `${endX}px`;
-                    img.style.top = `${endY}px`;
-                    img.style.opacity = "1";
-                }, 10);
-
-                setTimeout(() => {
-                    img.remove();
-                }, 1010);
-            }
-        });
-    </script>
-
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            // Mendapatkan semua tombol "Detail"
-            const detailButtons = document.querySelectorAll(".add-to-cart");
+    document.addEventListener("DOMContentLoaded", () => {
+        const addToCartButtons = document.querySelectorAll(".cart");
+        const cartBadge = document.getElementById("cart-badge");
+        const CART_KEY_3 = 'cartItems3'; // PERUBAHAN UNTUK KERANJANG 3 - Definisikan kunci keranjang 3
 
-            // Mendapatkan semua elemen deskripsi
-            const descriptions = document.querySelectorAll(".description");
+        // Fungsi untuk memperbarui badge keranjang
+        function updateCartBadge() {
+            const cartItems = JSON.parse(localStorage.getItem(CART_KEY_3)) || []; // PERUBAHAN UNTUK KERANJANG 3 - Gunakan kunci keranjang 3
+            cartBadge.textContent = cartItems.length; // Update jumlah item di badge
 
-            // Menambahkan event listener ke setiap tombol "Detail"
-            detailButtons.forEach((button, index) => {
-                button.addEventListener("click", () => {
-                    // Menampilkan deskripsi yang sesuai
-                    descriptions[index].style.display = "block";
-                });
-            });
+            // Sembunyikan badge jika jumlah item adalah 0
+            if (cartItems.length === 0) {
+                cartBadge.style.display = "none";
+            } else {
+                cartBadge.style.display = "block";
+            }
+        }
 
-            // Menambahkan event listener ke setiap tombol "OK" pada deskripsi
-            const okButtons = document.querySelectorAll(".btndes");
-            okButtons.forEach((button, index) => {
-                button.addEventListener("click", () => {
-                    // Menutup deskripsi yang sesuai
-                    descriptions[index].style.display = "none";
-                });
+        // Update badge saat halaman dimuat
+        updateCartBadge();
+
+        // Add event listener to all "+" buttons
+        addToCartButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                const productItem = button.closest(".product-item");
+                const imgSrc = button.getAttribute("data-img"); // Get the image source
+                const itemName = button.getAttribute("data-name"); // Get the item name
+                const quantity = parseInt(productItem.querySelector(".quantity").value); // Get the quantity
+                const price = parseInt(productItem.querySelector(".price").textContent.replace("Rp", "").replace(".", "")); // Get the price
+
+                // Validate quantity
+                if (isNaN(quantity) || quantity <= 0) {
+                    alert("Jumlah barang harus lebih dari 0!");
+                    return;
+                }
+
+                // Create a cart item object
+                const cartItem = {
+                    imgSrc: imgSrc,
+                    itemName: itemName,
+                    quantity: quantity,
+                    price: price, // Add price to the cart item
+                };
+
+                // Retrieve existing cart items from localStorage
+                let cartItems = JSON.parse(localStorage.getItem(CART_KEY_3)) || []; // PERUBAHAN UNTUK KERANJANG 3 - Gunakan kunci keranjang 3
+
+                // Add the new item to the cart
+                cartItems.push(cartItem);
+
+                // Save the updated cart back to localStorage
+                localStorage.setItem(CART_KEY_3, JSON.stringify(cartItems)); // PERUBAHAN UNTUK KERANJANG 3 - Gunakan kunci keranjang 3
+
+                // Update the cart badge
+                updateCartBadge();
+
+                // Animate the image to the cart
+                animateImageToCart(imgSrc);
             });
         });
-    </script>
 
-    <!--script diseble masukkan keranjang-->
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const minusButtons = document.querySelectorAll(".minus");
-            const plusButtons = document.querySelectorAll(".plus");
-            const cartButtons = document.querySelectorAll(".cart");
+        // Function to animate the image to the cart
+        function animateImageToCart(imgSrc) {
+            const img = document.createElement("img");
+            img.src = imgSrc;
+            img.style.position = "fixed";
+            img.style.width = "50px";
+            img.style.height = "50px";
+            img.style.borderRadius = "50%";
+            img.style.transition = "all 1s ease";
+            document.body.appendChild(img);
 
-            // Fungsi untuk memeriksa dan mengatur status tombol keranjang
-            function updateCartButtonState(input, cartButton) {
-                if (parseInt(input.value) === 0) {
-                    cartButton.disabled = true; // Nonaktifkan tombol jika nilai input adalah 0
-                } else {
-                    cartButton.disabled = false; // Aktifkan tombol jika nilai input lebih dari 0
-                }
+            const cartIcon = document.querySelector(".fa-shopping-cart");
+            const cartIconRect = cartIcon.getBoundingClientRect();
+
+            const imgRect = img.getBoundingClientRect();
+            const startX = imgRect.left;
+            const startY = imgRect.top;
+            const endX = cartIconRect.left + cartIconRect.width / 2 - imgRect.width / 2;
+            const endY = cartIconRect.top + cartIconRect.height / 2 - imgRect.height / 2;
+
+            img.style.left = `${startX}px`;
+            img.style.top = `${startY}px`;
+
+            setTimeout(() => {
+                img.style.left = `${endX}px`;
+                img.style.top = `${endY}px`;
+                img.style.opacity = "1";
+            }, 10);
+
+            setTimeout(() => {
+                img.remove();
+            }, 1010);
+        }
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Mendapatkan semua tombol "Detail"
+        const detailButtons = document.querySelectorAll(".add-to-cart");
+
+        // Mendapatkan semua elemen deskripsi
+        const descriptions = document.querySelectorAll(".description");
+
+        // Menambahkan event listener ke setiap tombol "Detail"
+        detailButtons.forEach((button, index) => {
+            button.addEventListener("click", () => {
+                // Menampilkan deskripsi yang sesuai
+                descriptions[index].style.display = "block";
+            });
+        });
+
+        // Menambahkan event listener ke setiap tombol "OK" pada deskripsi
+        const okButtons = document.querySelectorAll(".btndes");
+        okButtons.forEach((button, index) => {
+            button.addEventListener("click", () => {
+                // Menutup deskripsi yang sesuai
+                descriptions[index].style.display = "none";
+            });
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const minusButtons = document.querySelectorAll(".minus");
+        const plusButtons = document.querySelectorAll(".plus");
+        const cartButtons = document.querySelectorAll(".cart");
+
+        // Fungsi untuk memeriksa dan mengatur status tombol keranjang
+        function updateCartButtonState(input, cartButton) {
+            if (parseInt(input.value) === 0) {
+                cartButton.disabled = true; // Nonaktifkan tombol jika nilai input adalah 0
+            } else {
+                cartButton.disabled = false; // Aktifkan tombol jika nilai input lebih dari 0
             }
+        }
 
-            // Fungsi untuk tombol minus
-            minusButtons.forEach((button) => {
-                button.addEventListener("click", () => {
-                    const input = button.nextElementSibling; // Ambil input yang bersebelahan
-                    let value = parseInt(input.value); // Ambil nilai input dan ubah ke integer
-                    if (value > 0) { // Pastikan nilai tidak kurang dari 1
-                        input.value = value - 1; // Kurangi nilai
-                    } else {
-                        input.value = 0; // Set nilai ke 0 jika kurang dari 1
-                    }
-                    // Perbarui status tombol keranjang
-                    const cartButton = button.parentElement.querySelector(".cart");
-                    updateCartButtonState(input, cartButton);
-                });
-            });
-
-            // Fungsi untuk tombol plus
-            plusButtons.forEach((button) => {
-                button.addEventListener("click", () => {
-                    const input = button.previousElementSibling; // Ambil input yang bersebelahan
-                    let value = parseInt(input.value); // Ambil nilai input dan ubah ke integer
-                    input.value = value + 1; // Tambahkan nilai
-                    // Perbarui status tombol keranjang
-                    const cartButton = button.parentElement.querySelector(".cart");
-                    updateCartButtonState(input, cartButton);
-                });
-            });
-
-            // Inisialisasi status tombol keranjang saat halaman dimuat
-            cartButtons.forEach((cartButton) => {
-                const input = cartButton.parentElement.querySelector(".quantity");
+        // Fungsi untuk tombol minus
+        minusButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                const input = button.nextElementSibling; // Ambil input yang bersebelahan
+                let value = parseInt(input.value); // Ambil nilai input dan ubah ke integer
+                if (value > 0) { // Pastikan nilai tidak kurang dari 1
+                    input.value = value - 1; // Kurangi nilai
+                } else {
+                    input.value = 0; // Set nilai ke 0 jika kurang dari 1
+                }
+                // Perbarui status tombol keranjang
+                const cartButton = button.parentElement.querySelector(".cart");
                 updateCartButtonState(input, cartButton);
             });
         });
-    </script>
 
-    <script>
-        // Ambil data menu dari localStorage
-        const menuItems = JSON.parse(localStorage.getItem('menuItems')) || [];
-
-        // Fungsi untuk menampilkan menu
-        function displayMenu() {
-            const menuList = document.getElementById('menuList');
-            menuList.innerHTML = '';
-
-            menuItems.forEach(item => {
-                const menuItem = document.createElement('div');
-                menuItem.className = 'p-4 border border-gray-300 rounded-lg';
-                menuItem.innerHTML = `
-                <h2 class="text-xl font-semibold">ID: ${item.id}</h2>
-                <h2 class="text-xl font-semibold">${item.name}</h2>
-                <p class="text-gray-600">Harga: Rp${item.price}</p>
-                <p class="text-gray-600">Stok: ${item.stock}</p>
-                <img src="${item.image}" alt="${item.name}" class="mt-2 w-32 h-32 object-cover rounded-lg">
-            `;
-                menuList.appendChild(menuItem);
+        // Fungsi untuk tombol plus
+        plusButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                const input = button.previousElementSibling; // Ambil input yang bersebelahan
+                let value = parseInt(input.value); // Ambil nilai input dan ubah ke integer
+                input.value = value + 1; // Tambahkan nilai
+                // Perbarui status tombol keranjang
+                const cartButton = button.parentElement.querySelector(".cart");
+                updateCartButtonState(input, cartButton);
             });
-        }
+        });
 
-        // Panggil fungsi displayMenu saat halaman dimuat
-        displayMenu();
-    </script>
-    
-    
+        // Inisialisasi status tombol keranjang saat halaman dimuat
+        cartButtons.forEach((cartButton) => {
+            const input = cartButton.parentElement.querySelector(".quantity");
+            updateCartButtonState(input, cartButton);
+        });
+    });
+</script>
+
+<script>
+    // Ambil data menu dari localStorage
+    const menuItems = JSON.parse(localStorage.getItem('menuItems3')) || []; // PERUBAHAN UNTUK KERANJANG 3 - Kunci menu spesifik
+
+    // Fungsi untuk menampilkan menu
+    function displayMenu() {
+        const menuList = document.getElementById('menuList');
+        menuList.innerHTML = '';
+
+        menuItems.forEach(item => {
+            const menuItem = document.createElement('div');
+            menuItem.className = 'p-4 border border-gray-300 rounded-lg';
+            menuItem.innerHTML = `
+            <h2 class="text-xl font-semibold">ID: ${item.id}</h2>
+            <h2 class="text-xl font-semibold">${item.name}</h2>
+            <p class="text-gray-600">Harga: Rp${item.price}</p>
+            <p class="text-gray-600">Stok: ${item.stock}</p>
+            <img src="${item.image}" alt="${item.name}" class="mt-2 w-32 h-32 object-cover rounded-lg">
+        `;
+            menuList.appendChild(menuItem);
+        });
+    }
+
+    // Panggil fungsi displayMenu saat halaman dimuat
+    displayMenu();
+</script>
+
+
 </body>
 </html>

@@ -73,7 +73,7 @@
     .nav i {
         cursor: pointer;
     }
-    
+
     .nav a {
       color: white;
     }
@@ -184,110 +184,110 @@
     </main>
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const cartItemsContainer = document.querySelector(".cart-items");
+        const CART_KEY_3 = 'cartItems3'; // Kunci localStorage untuk keranjang 3
 
-            // Ambil data dari localStorage
-            const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+document.addEventListener("DOMContentLoaded", () => {
+    const cartItemsContainer = document.querySelector(".cart-items");
 
-            if (cartItems.length === 0) {
-                cartItemsContainer.innerHTML = '<p>Keranjang Anda kosong.</p>';
+    // Ambil data dari localStorage menggunakan kunci spesifik
+    const cartItems = JSON.parse(localStorage.getItem(CART_KEY_3)) || [];
+
+    if (cartItems.length === 0) {
+        cartItemsContainer.innerHTML = '<p>Keranjang Anda kosong.</p>';
+    } else {
+        // Group items by name and sum their quantities and total price
+        const groupedItems = cartItems.reduce((acc, item) => {
+            if (acc[item.itemName]) {
+                acc[item.itemName].quantity += item.quantity;
+                acc[item.itemName].totalPrice += item.price * item.quantity;
             } else {
-                // Group items by name and sum their quantities and total price
-                const groupedItems = cartItems.reduce((acc, item) => {
-                    if (acc[item.itemName]) {
-                        acc[item.itemName].quantity += item.quantity;
-                        acc[item.itemName].totalPrice += item.price * item.quantity;
-                    } else {
-                        acc[item.itemName] = {
-                            ...item,
-                            totalPrice: item.price * item.quantity
-                        };
-                    }
-                    return acc;
-                }, {});
-
-                // Tampilkan item di keranjang
-                Object.values(groupedItems).forEach((item) => {
-                    const cartItem = document.createElement("div");
-                    cartItem.classList.add("cart-item");
-
-                    const imgElement = document.createElement("img");
-                    imgElement.src = item.imgSrc;
-                    imgElement.alt = item.itemName;
-
-                    const itemNameElement = document.createElement("span");
-                    itemNameElement.textContent = `${item.itemName} (${item.quantity})`;
-
-                    const priceElement = document.createElement("span");
-                    priceElement.textContent = `Rp ${item.totalPrice.toLocaleString()}`; // Tampilkan total harga per item
-
-                    const removeButton = document.createElement("button");
-                    removeButton.textContent = "Remove";
-                    removeButton.classList.add("remove-from-cart");
-
-                    // Tambahkan event listener untuk tombol remove
-                    removeButton.addEventListener("click", () => {
-                        // Filter item yang akan dihapus
-                        const updatedCartItems = cartItems.filter((cartItem) => cartItem.itemName !== item.itemName);
-                        // Update localStorage
-                        localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
-                        // Reload halaman untuk mencerminkan perubahan
-                        location.reload();
-                    });
-
-                    // Tambahkan elemen ke cart item
-                    cartItem.appendChild(imgElement);
-                    cartItem.appendChild(itemNameElement);
-                    cartItem.appendChild(priceElement);
-                    cartItem.appendChild(removeButton);
-
-                    // Tambahkan cart item ke container
-                    cartItemsContainer.appendChild(cartItem);
-                });
-
-                // Hitung total harga
-                const totalPrice = Object.values(groupedItems).reduce((acc, item) => acc + item.totalPrice, 0);
-
-                // Tampilkan total harga
-                const totalPriceElement = document.createElement("div");
-                totalPriceElement.classList.add("total-price");
-                totalPriceElement.textContent = `Total Harga: Rp ${totalPrice.toLocaleString()}`;
-                cartItemsContainer.appendChild(totalPriceElement);
+                acc[item.itemName] = {
+                    ...item,
+                    totalPrice: item.price * item.quantity
+                };
             }
+            return acc;
+        }, {});
+
+        // Tampilkan item di keranjang
+        Object.values(groupedItems).forEach((item) => {
+            const cartItem = document.createElement("div");
+            cartItem.classList.add("cart-item");
+
+            const imgElement = document.createElement("img");
+            imgElement.src = item.imgSrc;
+            imgElement.alt = item.itemName;
+
+            const itemNameElement = document.createElement("span");
+            itemNameElement.textContent = `${item.itemName} (${item.quantity})`;
+
+            const priceElement = document.createElement("span");
+            priceElement.textContent = `Rp ${item.totalPrice.toLocaleString()}`; // Tampilkan total harga per item
+
+            const removeButton = document.createElement("button");
+            removeButton.textContent = "Remove";
+            removeButton.classList.add("remove-from-cart");
+
+            // Tambahkan event listener untuk tombol remove
+            removeButton.addEventListener("click", () => {
+                // Filter item yang akan dihapus
+                const updatedCartItems = cartItems.filter((cartItem) => cartItem.itemName !== item.itemName);
+                // Update localStorage menggunakan kunci spesifik
+                localStorage.setItem(CART_KEY_3, JSON.stringify(updatedCartItems));
+                // Reload halaman untuk mencerminkan perubahan
+                location.reload();
+            });
+
+            // Tambahkan elemen ke cart item
+            cartItem.appendChild(imgElement);
+            cartItem.appendChild(itemNameElement);
+            cartItem.appendChild(priceElement);
+            cartItem.appendChild(removeButton);
+
+            // Tambahkan cart item ke container
+            cartItemsContainer.appendChild(cartItem);
         });
-    </script>
 
-    <script>
-        function sendWhatsAppMessage() {
-            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        // Hitung total harga
+        const totalPrice = Object.values(groupedItems).reduce((acc, item) => acc + item.totalPrice, 0);
 
-            // Group items by name and sum their quantities
-            const groupedItems = cartItems.reduce((acc, item) => {
-                if (acc[item.itemName]) {
-                    acc[item.itemName].quantity += item.quantity;
-                } else {
-                    acc[item.itemName] = { ...item };
-                }
-                return acc;
-            }, {});
+        // Tampilkan total harga
+        const totalPriceElement = document.createElement("div");
+        totalPriceElement.classList.add("total-price");
+        totalPriceElement.textContent = `Total Harga: Rp ${totalPrice.toLocaleString()}`;
+        cartItemsContainer.appendChild(totalPriceElement);
+    }
+});
 
-            // Convert the grouped items to a string
-            const cartItemsString = Object.values(groupedItems)
-                .map(item => `${item.itemName} (${item.quantity})`)
-                .join('\n');
+function sendWhatsAppMessage3() {
+    const cartItems = JSON.parse(localStorage.getItem(CART_KEY_3)) || [];
 
-            const currentDate = new Date();
-            const formattedDate = currentDate.toLocaleDateString('id-ID');
-            const formattedTime = currentDate.toLocaleTimeString('id-ID');
-
-            const message = `Hallo kak, saya igin memesan:\n${cartItemsString}\n\nTanggal: ${formattedDate}\nWaktu: ${formattedTime}`;
-            const encodedMessage = encodeURIComponent(message);
-            const phoneNumber = '6285246196402'; // Ganti dengan nomor WhatsApp yang sesuai
-            const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-
-            window.open(whatsappLink, '_blank');
+    // Group items by name and sum their quantities
+    const groupedItems = cartItems.reduce((acc, item) => {
+        if (acc[item.itemName]) {
+            acc[item.itemName].quantity += item.quantity;
+        } else {
+            acc[item.itemName] = { ...item };
         }
+        return acc;
+    }, {});
+
+    // Convert the grouped items to a string
+    const cartItemsString = Object.values(groupedItems)
+        .map(item => `${item.itemName} (${item.quantity})`)
+        .join('\n');
+
+    const currentDate = new Date();
+    const formattedDate = currentDate.toLocaleDateString('id-ID');
+    const formattedTime = currentDate.toLocaleTimeString('id-ID');
+
+    const message = `Hallo kak, saya igin memesan dari Keranjang 3:\n${cartItemsString}\n\nTanggal: ${formattedDate}\nWaktu: ${formattedTime}`;
+    const encodedMessage = encodeURIComponent(message);
+    const phoneNumber = '6285246196402'; // Ganti dengan nomor WhatsApp yang sesuai
+    const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+    window.open(whatsappLink, '_blank');
+}
     </script>
 
 </body>

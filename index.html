@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+  <link rel="stylesheet" href="style.css"/>
+  <title>Document</title>
+</head>
+<body>
+  <!-- Header Section --><header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <img id="logo" alt="Logo Coffee Shop" src="mihun.png" />
+                <span>MIHUN LEGENDA</span>
+            </div>
+            <nav class="nav">
+                <a href="keranjang.html" title="Shopping Cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-badge" class="cart-badge">0</span> <!-- Badge untuk jumlah item -->
+                </a>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Delicious Food Is Waiting For You</h1>
+            <p>MIHUN LEGENDA Cita rasa istimewa, lezatnya tak terlupakan! dalam setiap sajian sederhananya.</p>
+            <div class="hero-buttons">
+                <a href="#products" class="food-menu-btn">Food Menu</a>
+                <a href="#" class="book-table-btn">Book a Table</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="mihun.png" alt="Hero Food">
+        </div>
+    </section>
+    
+  
+  <!-- Main Content -->
+    <main>
+      <h1>Our Menu</h1>
+        <!-- Product Grid -->
+        <section id="products" class="products">
+                <div class="product-grid">
+                    <!-- Product Item -->
+                    <div class="product-item">
+                      <div class="content"></div>
+                        <img alt="mihun" src="mihun.png" />
+                        <h3>Mihun</h3>
+                        <p></p>
+                        <p class="price">Rp5.000</p>
+                        <button id="btnmenu" class="add-to-cart">
+                            Detail
+                        </button>
+                        <div class="jumblah">
+                            <button class="minus">-</button>
+                            <input type="text" value="0" class="quantity">
+                            <button class="plus">+</button>
+                            <button class="cart" data-img="mihun.png" data-name="mihun">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!--box deskripsi menu-->
+                    <div class="description">
+                        <img src="mihun.png" alt="" />
+                        <h3>mihun</h3>
+                        <p>
+                            (penjelasan product)
+                        </p>
+                        <button class="btndes">O K</button>
+                    </div>
+
+                    <div class="product-item">
+                      <div class="content"></div>
+                        <img alt="nasikuning" src="nasikuning.png" />
+                        <h3>Nasikuning</h3>
+                        <p></p>
+                        <p class="price">Rp10.000</p>
+                        <button id="btnmenu" class="add-to-cart">
+                            Detail
+                        </button>
+                        <div class="jumblah">
+                            <button class="minus">-</button>
+                            <input type="text" value="0" class="quantity">
+                            <button class="plus">+</button>
+                            <button class="cart" data-img="nasikuning.png" data-name="nasikuning">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!--box deskripsi menu-->
+                    <div class="description">
+                        <img src="nasikuning.png" alt="" />
+                        <h3>nasikuning</h3>
+                        <p>
+                            (penjelasan product)
+                        </p>
+                        <button class="btndes">O K</button>
+                    </div>
+
+                    <div class="product-item">
+                      <div class="content"></div>
+                        <img alt="Nasiburger" src="nasiburger.png"/>
+                        <h3>Nasiburger</h3>
+                        <p></p>
+                        <p class="price">Rp10.000</p>
+                        <button id="btnmenu" class="add-to-cart">
+                            Detail
+                        </button>
+                        <div class="jumblah">
+                            <button class="minus">-</button>
+                            <input type="text" value="0" class="quantity">
+                            <button class="plus">+</button>
+                            <button class="cart" data-img="nasiburger.png" data-name="Nasiburger">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!--box deskripsi menu-->
+                    <div class="description">
+                        <img src="nasiburger.png" alt="" />
+                        <h3>Nasiburger</h3>
+                        <p>
+                            (penjelasan product)
+                        </p>
+                        <button class="btndes">O K</button>
+                    </div>
+
+                    <div class="product-item">
+                      <div class="content"></div>
+                        <img alt="Gorengan" src="gorengan.png" />
+                        <h3>Gorengan</h3>
+                        <p></p>
+                        <p class="price">Rp5.000</p>
+                        <button id="btnmenu" class="add-to-cart">
+                            Detail
+                        </button>
+                        <div class="jumblah">
+                            <button class="minus">-</button>
+                            <input type="text" value="0" class="quantity">
+                            <button class="plus">+</button>
+                            <button class="cart" data-img="gorengan.png" data-name="Gorengan">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!--box deskripsi menu-->
+                    <div class="description">
+                        <img src="gorengan.png" alt="" />
+                        <h3>Gorengan</h3>
+                        <p>
+                            (penjelasan product)
+                        </p>
+                        <button class="btndes">O K</button>
+                    </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <section class="best-potatoes">
+        <div class="potatoes-content">
+            <h2>Our branch is now in Balikpapan city</h2>
+            <p>cita rasa MIHUN LEGENDA kini bisa kalian temukan di Balikpapan, klik tombol di bawah untuk memesan sekarang.</p>
+            <a href="https://wa.me">pesan sekarang</a>
+        </div>
+        <div class="potatoes-image">
+            <img src="hero-food.png" alt="French Fries">
+        </div>
+    </section>
+  
+  <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-logo">
+                <img id="logofoot" alt="Logo Coffee Shop" src="mihun.png" />
+                <p>© BimaTech<br />MIHUN LEGENDA, 2025</p>
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="about.html">Tentang Kami</a></li>
+                    <li><a href="#">Pengiriman</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <a href="https://wa.me/6285246196402?text=Halo,%20kak%20saya..." target="_blank">(+62)85246196402</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.facebook.com/share/15qTwkiYfd/" target="_blank"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://x.com/bimarizki34?t=DwpYkXzYEU_ZXh37-uwG-w&s=08" target="_blank"><i
+                        class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/bimatech_?igsh=anh5N3Zud3R1bTdr" target="_blank"><i
+                        class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+  
+    
+    
+        <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const addToCartButtons = document.querySelectorAll(".cart");
+            const cartBadge = document.getElementById("cart-badge");
+
+            // Fungsi untuk memperbarui badge keranjang
+            function updateCartBadge() {
+                const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+                cartBadge.textContent = cartItems.length; // Update jumlah item di badge
+
+                // Sembunyikan badge jika jumlah item adalah 0
+                if (cartItems.length === 0) {
+                    cartBadge.style.display = "none";
+                } else {
+                    cartBadge.style.display = "block";
+                }
+            }
+
+            // Update badge saat halaman dimuat
+            updateCartBadge();
+
+            // Add event listener to all "+" buttons
+            addToCartButtons.forEach((button) => {
+                button.addEventListener("click", () => {
+                    const productItem = button.closest(".product-item");
+                    const imgSrc = button.getAttribute("data-img"); // Get the image source
+                    const itemName = button.getAttribute("data-name"); // Get the item name
+                    const quantity = parseInt(productItem.querySelector(".quantity").value); // Get the quantity
+                    const price = parseInt(productItem.querySelector(".price").textContent.replace("Rp", "").replace(".", "")); // Get the price
+
+                    // Validate quantity
+                    if (isNaN(quantity) || quantity <= 0) {
+                        alert("Jumlah barang harus lebih dari 0!");
+                        return;
+                    }
+
+                    // Create a cart item object
+                    const cartItem = {
+                        imgSrc: imgSrc,
+                        itemName: itemName,
+                        quantity: quantity,
+                        price: price, // Add price to the cart item
+                    };
+
+                    // Retrieve existing cart items from localStorage
+                    let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+                    // Add the new item to the cart
+                    cartItems.push(cartItem);
+
+                    // Save the updated cart back to localStorage
+                    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+                    // Update the cart badge
+                    updateCartBadge();
+
+                    // Animate the image to the cart
+                    animateImageToCart(imgSrc);
+                });
+            });
+
+            // Function to animate the image to the cart
+            function animateImageToCart(imgSrc) {
+                const img = document.createElement("img");
+                img.src = imgSrc;
+                img.style.position = "fixed";
+                img.style.width = "50px";
+                img.style.height = "50px";
+                img.style.borderRadius = "50%";
+                img.style.transition = "all 1s ease";
+                document.body.appendChild(img);
+
+                const cartIcon = document.querySelector(".fa-shopping-cart");
+                const cartIconRect = cartIcon.getBoundingClientRect();
+
+                const imgRect = img.getBoundingClientRect();
+                const startX = imgRect.left;
+                const startY = imgRect.top;
+                const endX = cartIconRect.left + cartIconRect.width / 2 - imgRect.width / 2;
+                const endY = cartIconRect.top + cartIconRect.height / 2 - imgRect.height / 2;
+
+                img.style.left = `${startX}px`;
+                img.style.top = `${startY}px`;
+
+                setTimeout(() => {
+                    img.style.left = `${endX}px`;
+                    img.style.top = `${endY}px`;
+                    img.style.opacity = "1";
+                }, 10);
+
+                setTimeout(() => {
+                    img.remove();
+                }, 1010);
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Mendapatkan semua tombol "Detail"
+            const detailButtons = document.querySelectorAll(".add-to-cart");
+
+            // Mendapatkan semua elemen deskripsi
+            const descriptions = document.querySelectorAll(".description");
+
+            // Menambahkan event listener ke setiap tombol "Detail"
+            detailButtons.forEach((button, index) => {
+                button.addEventListener("click", () => {
+                    // Menampilkan deskripsi yang sesuai
+                    descriptions[index].style.display = "block";
+                });
+            });
+
+            // Menambahkan event listener ke setiap tombol "OK" pada deskripsi
+            const okButtons = document.querySelectorAll(".btndes");
+            okButtons.forEach((button, index) => {
+                button.addEventListener("click", () => {
+                    // Menutup deskripsi yang sesuai
+                    descriptions[index].style.display = "none";
+                });
+            });
+        });
+    </script>
+
+    <!--script diseble masukkan keranjang-->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const minusButtons = document.querySelectorAll(".minus");
+            const plusButtons = document.querySelectorAll(".plus");
+            const cartButtons = document.querySelectorAll(".cart");
+
+            // Fungsi untuk memeriksa dan mengatur status tombol keranjang
+            function updateCartButtonState(input, cartButton) {
+                if (parseInt(input.value) === 0) {
+                    cartButton.disabled = true; // Nonaktifkan tombol jika nilai input adalah 0
+                } else {
+                    cartButton.disabled = false; // Aktifkan tombol jika nilai input lebih dari 0
+                }
+            }
+
+            // Fungsi untuk tombol minus
+            minusButtons.forEach((button) => {
+                button.addEventListener("click", () => {
+                    const input = button.nextElementSibling; // Ambil input yang bersebelahan
+                    let value = parseInt(input.value); // Ambil nilai input dan ubah ke integer
+                    if (value > 0) { // Pastikan nilai tidak kurang dari 1
+                        input.value = value - 1; // Kurangi nilai
+                    } else {
+                        input.value = 0; // Set nilai ke 0 jika kurang dari 1
+                    }
+                    // Perbarui status tombol keranjang
+                    const cartButton = button.parentElement.querySelector(".cart");
+                    updateCartButtonState(input, cartButton);
+                });
+            });
+
+            // Fungsi untuk tombol plus
+            plusButtons.forEach((button) => {
+                button.addEventListener("click", () => {
+                    const input = button.previousElementSibling; // Ambil input yang bersebelahan
+                    let value = parseInt(input.value); // Ambil nilai input dan ubah ke integer
+                    input.value = value + 1; // Tambahkan nilai
+                    // Perbarui status tombol keranjang
+                    const cartButton = button.parentElement.querySelector(".cart");
+                    updateCartButtonState(input, cartButton);
+                });
+            });
+
+            // Inisialisasi status tombol keranjang saat halaman dimuat
+            cartButtons.forEach((cartButton) => {
+                const input = cartButton.parentElement.querySelector(".quantity");
+                updateCartButtonState(input, cartButton);
+            });
+        });
+    </script>
+
+    <script>
+        // Ambil data menu dari localStorage
+        const menuItems = JSON.parse(localStorage.getItem('menuItems')) || [];
+
+        // Fungsi untuk menampilkan menu
+        function displayMenu() {
+            const menuList = document.getElementById('menuList');
+            menuList.innerHTML = '';
+
+            menuItems.forEach(item => {
+                const menuItem = document.createElement('div');
+                menuItem.className = 'p-4 border border-gray-300 rounded-lg';
+                menuItem.innerHTML = `
+                <h2 class="text-xl font-semibold">ID: ${item.id}</h2>
+                <h2 class="text-xl font-semibold">${item.name}</h2>
+                <p class="text-gray-600">Harga: Rp${item.price}</p>
+                <p class="text-gray-600">Stok: ${item.stock}</p>
+                <img src="${item.image}" alt="${item.name}" class="mt-2 w-32 h-32 object-cover rounded-lg">
+            `;
+                menuList.appendChild(menuItem);
+            });
+        }
+
+        // Panggil fungsi displayMenu saat halaman dimuat
+        displayMenu();
+    </script>
+    
+    
+</body>
+</html>

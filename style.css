@@ -1,0 +1,498 @@
+body{
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+}
+/* Header Styles */
+.header {
+  background-color: black;
+  color: white;
+  padding: 1rem 0;
+  position: sticky;
+  /* Membuat header sticky */
+  top: 0;
+  /* Tetap di bagian atas halaman */
+  z-index: 9999;
+  /* Pastikan header berada di atas elemen lain */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid white;
+  margin-right: 1rem;
+}
+
+.logo-container span {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav {
+  display: flex;
+  gap: 2rem;
+  background-color: transparent;
+}
+
+.nav i {
+  cursor: pointer;
+  color: white;
+}
+
+.nav a:hover {
+  background-color: transparent;
+  color: black;
+  border: 1px solid white;
+}
+
+#nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px; /* atau 4 satuan spasi lainnya */
+  margin-bottom: 10px;
+  margin-right: 20px;
+}
+
+#nav a {
+  /* Styling agar item terlihat */
+  background-color: rgba(232, 230, 244, 1);
+  border-radius: 10px;
+  padding: 5px 20px 5px 20px;
+  border: 1px solid white;
+  text-decoration: none; /* menghilangkan garis bawah pada link */
+  color: black; /* mengatur warna teks link */
+  font-size: 250%;
+}
+
+ .nav a[href="keranjang.html"] {
+   position: relative;
+ }
+
+ .cart-badge {
+   position: absolute;
+   top: -10px;
+   right: -10px;
+   background-color: red;
+   color: white;
+   border-radius: 50%;
+   padding: 2px 6px;
+   font-size: 12px;
+   font-weight: bold;
+ }
+ 
+ .hero {
+    display: flex;
+    align-items: center;
+    padding: 50px;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.hero-image {
+    flex: 1;
+    text-align: center;
+}
+
+.hero-image img {
+    max-width: 100%;
+    border-radius: 50%;
+}
+
+.hero-buttons a {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-right: 10px;
+    margin-top: 10px;
+    text-decoration: none;
+    color: white;
+    background-color: green;
+    border-radius: 5px;
+}
+
+
+main {
+  background-image: url('background.jpg');
+  backdrop-filter: blur(10px);
+  padding: 2rem 0;
+}
+
+main h1 {
+  text-align: center;
+}
+
+ /* Product Grid Styles */
+ .products {
+   padding: 2rem 0;
+   margin-top: 2rem;
+ }
+
+ .product-grid {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   gap: 1rem;
+   max-width: 1200px;
+   margin: 0 auto;
+   padding: 0 1rem;
+ }
+
+ .jumblah {
+   margin-top: 2rem;
+ }
+
+ .jumblah button.minus,
+ .jumblah button.plus {
+   background-color: black;
+   /* Warna latar belakang tombol */
+   color: white;
+   /* Warna teks tombol */
+   border: none;
+   /* Menghilangkan border */
+   border-radius: 50%;
+   /* Membuat tombol bulat */
+   width: 20px;
+   /* Lebar tombol */
+   height: 20px;
+   /* Tinggi tombol */
+   font-size: 12px;
+   /* Ukuran font */
+   padding: 0;
+   /* Menghilangkan padding */
+   cursor: pointer;
+   /* Mengubah kursor saat dihover */
+ }
+
+ .jumblah input.quantity {
+   width: 40px;
+   /* Lebar input */
+   text-align: center;
+   /* Pusatkan teks di input */
+   border: 1px solid black;
+   /* Garis tepi input */
+   border-radius: 5px;
+   /* Sudut melengkung input */
+   padding: 2px;
+   /* Ruang dalam input */
+   font-size: 12px;
+   /* Ukuran font input */
+ }
+
+ .cart {
+   margin-left: 1rem;
+   padding: 0.5rem;
+   border: 1px solid black;
+   border-radius: 5px;
+   cursor: pointer;
+ }
+
+ /* Gaya untuk tombol keranjang yang dinonaktifkan */
+ .cart:disabled {
+   background-color: #cccccc;
+   /* Warna latar belakang abu-abu */
+   color: #666666;
+   /* Warna teks abu-abu gelap */
+   cursor: not-allowed;
+   /* Mengubah kursor menjadi tanda "tidak diizinkan" */
+   opacity: 0.7;
+   /* Mengurangi opacity untuk efek "tidak aktif" */
+   border: 1px solid #999999;
+   /* Garis tepi abu-abu */
+ }
+
+ /* Gaya untuk tombol keranjang yang aktif */
+ .cart:not(:disabled) {
+   background-color: black;
+   /* Warna latar belakang hitam */
+   color: white;
+   /* Warna teks putih */
+   cursor: pointer;
+   /* Kursor pointer */
+   opacity: 1;
+   /* Opacity penuh */
+   border: 1px solid black;
+   /* Garis tepi hitam */
+ }
+
+ .description {
+   position: sticky;
+   /* Membuat elemen tetap di posisi yang sama di layar */
+   top: 50%;
+   /* Menempatkan elemen di tengah vertikal */
+   left: 50%;
+   /* Menempatkan elemen di tengah horizontal */
+   transform: translate(-50%, -50%);
+   /* Menggeser elemen ke tengah */
+   z-index: 999;
+   /* Memastikan elemen berada di atas elemen lain */
+   width: 100%;
+   /* Lebar elemen */
+   height: auto;
+   /* Tinggi elemen menyesuaikan konten */
+   background-color: white;
+   /* Warna latar belakang */
+   text-align: center;
+   /* Teks di tengah */
+   font-weight: bold;
+   /* Teks tebal */
+   border: 1px black solid;
+   /* Garis tepi */
+   border-radius: 15px;
+   /* Sudut melengkung */
+   padding: 0.5rem;
+   /* Ruang dalam */
+   display: none;
+   /* Awalnya disembunyikan */
+ }
+
+ .description img {
+   width: 80%;
+   border-radius: 20px;
+   /* Sudut melengkung untuk gambar */
+ }
+
+ .description button {
+   color: white;
+   /* Warna teks tombol */
+   background-color: black;
+   /* Warna latar belakang tombol */
+   width: 30%;
+   /* Lebar tombol */
+   height: auto;
+   /* Tinggi tombol */
+   border-radius: 5px;
+   /* Sudut melengkung */
+ }
+
+ .product-item {
+   position: relative;
+   background-color: rgba(30, 30, 30, 12%);
+   backdrop-filter: blur(5px);
+   padding: 0.5rem;
+   border-radius: 0.5rem;
+   border-top-left-radius: 37%;
+   border-top-right-radius: 37%;
+   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+   text-align: center;
+   border: 2px dashed black;
+   margin-top: 30%;
+ }
+
+ .product-item img {
+   position: absolute;
+   width: 100%;
+   height: auto;
+   object-fit: cover;
+   margin-bottom: 1rem;
+   padding: 0;
+   border-radius: 15%;
+   top: -4rem;
+   left: 50%;
+   transform: translateX(-50%);
+ }
+
+ .product-item h3 {
+   font-weight: bold;
+   margin-bottom: 0.5rem;
+   background-color: black;
+   color: white;
+   border-radius: 9999px;
+ }
+
+ .product-item .price {
+   font-weight: bold;
+   margin-bottom: 1rem;
+   background-color: black;
+   color: white;
+   border-radius: 9999px;
+ }
+
+ .product-item button {
+   background-color: black;
+   color: white;
+   padding: 0.5rem 1rem;
+   border-radius: 9999px;
+   cursor: pointer;
+ }
+
+ .product-item {
+   transition: transform 0.3s ease, box-shadow 0.3s ease;
+ }
+
+ .product-item:hover {
+   transform: translateY(-5px);
+   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
+ }
+ 
+ .content {
+      margin-top: 6rem;
+      text-align: center;
+    }
+
+.best-potatoes {
+    padding: 5%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+.potatoes-content {
+    flex: 1;
+}
+
+.potatoes-content a {
+  background-color: green;
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem;
+  border-radius: 25px;
+  
+}
+
+.potatoes-image {
+    flex: 1;
+    text-align: center;
+}
+
+.potatoes-image img {
+    max-width: 100%;
+}
+
+
+ /* Footer Styles */
+ .footer {
+   background-color: black;
+   color: white;
+   padding: 2rem 0;
+ }
+
+ .footer .container {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   gap: 2rem;
+ }
+
+ .footer-logo img {
+   width: 50px;
+   height: 50px;
+   border-radius: 50%;
+   border: 1px solid white;
+   margin-bottom: 1rem;
+ }
+
+ .footer-links ul {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+ }
+
+ .footer-links ul li {
+   margin-bottom: 0.5rem;
+ }
+
+ .footer-links ul li a {
+   color: white;
+   text-decoration: none;
+ }
+
+ .footer-links ul li a:hover {
+   color: #a0aec0;
+ }
+
+ .footer-contact a {
+   margin-bottom: 0.5rem;
+   text-decoration: none;
+   color: white;
+ }
+
+ .footer-social a {
+   position: relative;
+   margin: 3px;
+   text-decoration: none;
+   color: white;
+ }
+ 
+ @media (min-width: 600px) {
+   .product-item {
+     height: auto;
+     padding-top: 20rem;
+   }
+
+ .product-item h3 {
+   font-size: 4rem;
+ }
+
+ .product-item .price {
+   font-size: 4rem;
+ }
+
+ .product-item button {
+   font-size: 4rem;
+ }
+ 
+ .jumblah {
+   margin-top: 2rem;
+ }
+
+ .jumblah button.minus,
+ .jumblah button.plus {
+   background-color: black;
+   /* Warna latar belakang tombol */
+   color: white;
+   /* Warna teks tombol */
+   border: none;
+   /* Menghilangkan border */
+   border-radius: 50%;
+   /* Membuat tombol bulat */
+   width: 4rem;
+   /* Lebar tombol */
+   height: 4rem;
+   /* Tinggi tombol */
+   font-size: 4rem;
+   /* Ukuran font */
+   padding: 0;
+   /* Menghilangkan padding */
+   cursor: pointer;
+   /* Mengubah kursor saat dihover */
+ }
+
+ .jumblah input.quantity {
+   width: 4rem;
+   /* Lebar input */
+   text-align: center;
+   /* Pusatkan teks di input */
+   border: 1px solid black;
+   /* Garis tepi input */
+   border-radius: 5px;
+   /* Sudut melengkung input */
+   padding: 2px;
+   /* Ruang dalam input */
+   font-size: 4rem;
+   /* Ukuran font input */
+ }
+
+ .cart {
+   margin-left: 1rem;
+   padding: 0.5rem;
+   border: 1px solid black;
+   border-radius: 5px;
+   cursor: pointer;
+ }
+ }

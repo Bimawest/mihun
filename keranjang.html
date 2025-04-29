@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Welcome to Coffee Shop, tempat yang tepat untuk menikmati kopi terbaik di kota. Jelajahi berbagai macam campuran kopi kami dan nikmati pengalaman minum kopi yang unik." />
+    <meta name="keywords"
+        content="coffee, coffee shop, latte, butterscotch, taro latte, pandan coffee, mango yakult, nuttela blend" />
+    <meta property="og:image" content="img/logo.png" />
+    <meta name="author" content="BimaTech" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <title>Keranjang</title>
+</head>
+
+<style>
+    /* Basic styles for the cart */
+    body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url('img/kai.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: repeat;
+    }
+
+    .header {
+        background-color: black;
+        color: white;
+        padding: 1rem 0;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+        font-size: 1.9rem;
+        font-weight: bold;
+    }
+
+    .logo-container img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 1px solid white;
+        margin-right: 1rem;
+    }
+
+    .logo-container a {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: white;
+    }
+
+    .nav {
+        display: flex;
+        gap: 2rem;
+        background-color: transparent;
+    }
+
+    .nav i {
+        cursor: pointer;
+    }
+    
+    .nav a {
+      color: white;
+    }
+
+    #home,
+    #beranda {
+        color: white;
+        background-color: black;
+        text-decoration: none;
+    }
+
+    #home:hover,
+    #beranda:hover {
+        color: black;
+        background-color: white;
+        text-decoration: none;
+    }
+
+    .containers {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgba(30, 30, 30, 12%);
+        backdrop-filter: blur(10px);
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+
+    .cart {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 100%;
+    }
+
+    .cart-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .cart-item img {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+        border-radius: 10px;
+    }
+
+    .cart-item span {
+        flex-grow: 1;
+    }
+
+    .remove-from-cart {
+        background-color: #ff4444;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 3px;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+
+    .remove-from-cart:hover {
+        background-color: #cc0000;
+    }
+
+    .checkout-button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+
+    .checkout-button:hover {
+        background-color: #45a049;
+    }
+</style>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <img id="logo" alt="Logo Coffee Shop" src="background.jpg" />
+                <a href="index.html" id="home" title="Search">MIHUN LEGENDA</a>
+            </div>
+            <nav class="nav">
+                <a href="index.html" id="beranda">Beranda</a>
+                <a href="keranjang.html" title="Shopping Cart">
+                    <i class="fas fa-shopping-cart"></i>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="containers">
+        <h2>Keranjang Belanja</h2>
+        <div class="cart-items"></div>
+        <button class="checkout-button" onclick="sendWhatsAppMessage()">Checkout</button>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const cartItemsContainer = document.querySelector(".cart-items");
+
+            // Ambil data dari localStorage
+            const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+            if (cartItems.length === 0) {
+                cartItemsContainer.innerHTML = '<p>Keranjang Anda kosong.</p>';
+            } else {
+                // Group items by name and sum their quantities and total price
+                const groupedItems = cartItems.reduce((acc, item) => {
+                    if (acc[item.itemName]) {
+                        acc[item.itemName].quantity += item.quantity;
+                        acc[item.itemName].totalPrice += item.price * item.quantity;
+                    } else {
+                        acc[item.itemName] = {
+                            ...item,
+                            totalPrice: item.price * item.quantity
+                        };
+                    }
+                    return acc;
+                }, {});
+
+                // Tampilkan item di keranjang
+                Object.values(groupedItems).forEach((item) => {
+                    const cartItem = document.createElement("div");
+                    cartItem.classList.add("cart-item");
+
+                    const imgElement = document.createElement("img");
+                    imgElement.src = item.imgSrc;
+                    imgElement.alt = item.itemName;
+
+                    const itemNameElement = document.createElement("span");
+                    itemNameElement.textContent = `${item.itemName} (${item.quantity})`;
+
+                    const priceElement = document.createElement("span");
+                    priceElement.textContent = `Rp ${item.totalPrice.toLocaleString()}`; // Tampilkan total harga per item
+
+                    const removeButton = document.createElement("button");
+                    removeButton.textContent = "Remove";
+                    removeButton.classList.add("remove-from-cart");
+
+                    // Tambahkan event listener untuk tombol remove
+                    removeButton.addEventListener("click", () => {
+                        // Filter item yang akan dihapus
+                        const updatedCartItems = cartItems.filter((cartItem) => cartItem.itemName !== item.itemName);
+                        // Update localStorage
+                        localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+                        // Reload halaman untuk mencerminkan perubahan
+                        location.reload();
+                    });
+
+                    // Tambahkan elemen ke cart item
+                    cartItem.appendChild(imgElement);
+                    cartItem.appendChild(itemNameElement);
+                    cartItem.appendChild(priceElement);
+                    cartItem.appendChild(removeButton);
+
+                    // Tambahkan cart item ke container
+                    cartItemsContainer.appendChild(cartItem);
+                });
+
+                // Hitung total harga
+                const totalPrice = Object.values(groupedItems).reduce((acc, item) => acc + item.totalPrice, 0);
+
+                // Tampilkan total harga
+                const totalPriceElement = document.createElement("div");
+                totalPriceElement.classList.add("total-price");
+                totalPriceElement.textContent = `Total Harga: Rp ${totalPrice.toLocaleString()}`;
+                cartItemsContainer.appendChild(totalPriceElement);
+            }
+        });
+    </script>
+
+    <script>
+        function sendWhatsAppMessage() {
+            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+            // Group items by name and sum their quantities
+            const groupedItems = cartItems.reduce((acc, item) => {
+                if (acc[item.itemName]) {
+                    acc[item.itemName].quantity += item.quantity;
+                } else {
+                    acc[item.itemName] = { ...item };
+                }
+                return acc;
+            }, {});
+
+            // Convert the grouped items to a string
+            const cartItemsString = Object.values(groupedItems)
+                .map(item => `${item.itemName} (${item.quantity})`)
+                .join('\n');
+
+            const currentDate = new Date();
+            const formattedDate = currentDate.toLocaleDateString('id-ID');
+            const formattedTime = currentDate.toLocaleTimeString('id-ID');
+
+            const message = `Hallo kak, saya igin memesan:\n${cartItemsString}\n\nTanggal: ${formattedDate}\nWaktu: ${formattedTime}`;
+            const encodedMessage = encodeURIComponent(message);
+            const phoneNumber = '6285246196402'; // Ganti dengan nomor WhatsApp yang sesuai
+            const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+            window.open(whatsappLink, '_blank');
+        }
+    </script>
+
+</body>
+
+</html>

@@ -339,6 +339,17 @@ main h1 {
    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
  }
  
+ .product-item ul {
+   padding: 0;
+ }
+ 
+ .product-item ul li {
+   justify-self: start;
+   text-align: start;
+   list-style-type: none;
+   color: black;
+ }
+ 
  .content {
       margin-top: 6rem;
       text-align: center;

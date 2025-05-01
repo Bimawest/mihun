@@ -283,9 +283,9 @@ function sendWhatsAppMessage3() {
     const formattedDate = currentDate.toLocaleDateString('id-ID');
     const formattedTime = currentDate.toLocaleTimeString('id-ID');
 
-    const message = `Hallo kak, saya igin memesan dari Keranjang 3:\n${cartItemsString}\n\nTanggal: ${formattedDate}\nWaktu: ${formattedTime}`;
+    const message = `Hallo kak, saya igin memesan:\n${cartItemsString}\n\nTanggal: ${formattedDate}\nWaktu: ${formattedTime} apakah masih tersedia`;
     const encodedMessage = encodeURIComponent(message);
-    const phoneNumber = '6285246196402'; // Ganti dengan nomor WhatsApp yang sesuai
+    const phoneNumber = '6282153547397'; // Ganti dengan nomor WhatsApp yang sesuai
     const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
     window.open(whatsappLink, '_blank');

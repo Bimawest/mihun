@@ -81,6 +81,18 @@
                       <div class="content"></div>
                         <img alt="nasikuning" src="nasikuning.png" />
                         <h3>Nasikuning</h3>
+                        <ul>
+                          <li>
+                            <input type="checkbox" name="Ayam" data-name="Ayam" id=""/>
+                            <label for="Ayam">Ayam</label>
+                            <br>
+                            <input type="checkbox" name="Ikan" data-name="Ikan" id=""/>
+                            <label for="Ikan">Ikan</label>
+                            <br>
+                            <input type="checkbox" name="Telur" data-name="Telur" id=""/>
+                            <label for="Telur">Telur</label>
+                          </li>
+                        </ul>
                         <p></p>
                         <p class="price">Rp10.000</p>
                         <button id="btnmenu" class="add-to-cart">
@@ -90,7 +102,7 @@
                             <button class="minus">-</button>
                             <input type="text" value="0" class="quantity">
                             <button class="plus">+</button>
-                            <button class="cart" data-img="nasikuning.png" data-name="nasikuning">
+                            <button class="cart" data-img="nasikuning.png">
                                 <i class="fas fa-shopping-cart"></i>
                             </button>
                         </div>
@@ -136,7 +148,25 @@
                     <div class="product-item">
                       <div class="content"></div>
                         <img alt="Gorengan" src="gorengan.png" />
-                        <h3>Gorengan</h3>
+                        <h3>Aneka Kue</h3>
+                        <ul>
+                          <li>
+                            <input type="checkbox" name="TahuIsi" data-name="TahuIsi" id=""/>
+                            <label for="TahuIsi">Tahu Isi</label>
+                            <br>
+                             <input type="checkbox" name="Ote-ote" data-name="Ote-ote" id=""/>
+                            <label for="Ote-ote">Ote-ote</label>
+                            <br>
+                             <input type="checkbox" name="Lumpia" data-name="Lumpia" id=""/>
+                            <label for="Lumpia">Lumpia</label>
+                            <br>
+                             <input type="checkbox" name="Untuk-untuk" data-name="Untuk-untuk" id=""/>
+                            <label for="Untuk-untuk">Untuk-untuk</label>
+                            <br>
+                             <input type="checkbox" name="donat" data-name="donat" id=""/>
+                            <label for="donat">donat</label>
+                          </li>
+                        </ul>
                         <p></p>
                         <p class="price">Rp5.000</p>
                         <button id="btnmenu" class="add-to-cart">
@@ -146,7 +176,7 @@
                             <button class="minus">-</button>
                             <input type="text" value="0" class="quantity">
                             <button class="plus">+</button>
-                            <button class="cart" data-img="gorengan.png" data-name="Gorengan">
+                            <button class="cart" data-img="gorengan.png">
                                 <i class="fas fa-shopping-cart"></i>
                             </button>
                         </div>
@@ -154,7 +184,7 @@
                     <!--box deskripsi menu-->
                     <div class="description">
                         <img src="gorengan.png" alt="" />
-                        <h3>Gorengan</h3>
+                        <h3>Aneka Kue</h3>
                         <p>
                             (penjelasan product)
                         </p>
@@ -229,39 +259,70 @@
         addToCartButtons.forEach((button) => {
             button.addEventListener("click", () => {
                 const productItem = button.closest(".product-item");
-                const imgSrc = button.getAttribute("data-img"); // Get the image source
-                const itemName = button.getAttribute("data-name"); // Get the item name
-                const quantity = parseInt(productItem.querySelector(".quantity").value); // Get the quantity
-                const price = parseInt(productItem.querySelector(".price").textContent.replace("Rp", "").replace(".", "")); // Get the price
+                let cartItems = JSON.parse(localStorage.getItem(CART_KEY_3)) || [];
 
-                // Validate quantity
-                if (isNaN(quantity) || quantity <= 0) {
-                    alert("Jumlah barang harus lebih dari 0!");
-                    return;
+                // Tangani item non-"Nasikuning" dan non-"Aneka Kue"
+                const imgSrc = button.getAttribute("data-img");
+                const itemName = button.getAttribute("data-name");
+                const quantityInput = productItem.querySelector(".quantity");
+
+                if (imgSrc && itemName && quantityInput) {
+                    const quantity = parseInt(quantityInput.value);
+                    const priceElement = productItem.querySelector(".price");
+                    const price = priceElement ? parseInt(priceElement.textContent.replace("Rp", "").replace(".", "")) : 0;
+
+                    if (isNaN(quantity) || quantity <= 0) {
+                        alert("Jumlah barang harus lebih dari 0!");
+                        return;
+                    }
+
+                    const cartItem = {
+                        imgSrc: imgSrc,
+                        itemName: itemName,
+                        quantity: quantity,
+                        price: price,
+                    };
+                    cartItems.push(cartItem);
+                    animateImageToCart(imgSrc);
+                } else {
+                    // Tangani item "Aneka Kue" (Gorengan) dengan checkbox
+                    if (productItem.querySelector('h3').textContent.trim() === 'Aneka Kue') {
+                        const checkboxes = productItem.querySelectorAll('input[type="checkbox"]:checked');
+                        const anekaKuePrice = parseInt(productItem.querySelector(".price").textContent.replace("Rp", "").replace(".", ""));
+
+                        checkboxes.forEach((checkbox) => {
+                            const kueName = checkbox.getAttribute("data-name");
+                            const kueItem = {
+                                imgSrc: "gorengan.png", // Gunakan gambar umum untuk aneka kue
+                                itemName: kueName,
+                                quantity: 1,
+                                price: anekaKuePrice,
+                            };
+                            cartItems.push(kueItem);
+                            animateImageToCart("gorengan.png");
+                        });
+                    }
+                    // Tangani item "Nasikuning" dengan checkbox
+                    else if (productItem.querySelector('h3').textContent.trim() === 'Nasikuning') {
+                        const checkboxes = productItem.querySelectorAll('input[type="checkbox"]:checked');
+                        const nasikuningPrice = parseInt(productItem.querySelector(".price").textContent.replace("Rp", "").replace(".", ""));
+
+                        checkboxes.forEach((checkbox) => {
+                            const laukName = checkbox.getAttribute("data-name");
+                            const nasikuningItem = {
+                                imgSrc: "nasikuning.png", // Gunakan gambar umum untuk nasikuning
+                                itemName: `Nasikuning (${laukName})`, // Tambahkan nama lauk ke nama item
+                                quantity: 1,
+                                price: nasikuningPrice,
+                            };
+                            cartItems.push(nasikuningItem);
+                            animateImageToCart("nasikuning.png");
+                        });
+                    }
                 }
 
-                // Create a cart item object
-                const cartItem = {
-                    imgSrc: imgSrc,
-                    itemName: itemName,
-                    quantity: quantity,
-                    price: price, // Add price to the cart item
-                };
-
-                // Retrieve existing cart items from localStorage
-                let cartItems = JSON.parse(localStorage.getItem(CART_KEY_3)) || []; // PERUBAHAN UNTUK KERANJANG 3 - Gunakan kunci keranjang 3
-
-                // Add the new item to the cart
-                cartItems.push(cartItem);
-
-                // Save the updated cart back to localStorage
-                localStorage.setItem(CART_KEY_3, JSON.stringify(cartItems)); // PERUBAHAN UNTUK KERANJANG 3 - Gunakan kunci keranjang 3
-
-                // Update the cart badge
+                localStorage.setItem(CART_KEY_3, JSON.stringify(cartItems));
                 updateCartBadge();
-
-                // Animate the image to the cart
-                animateImageToCart(imgSrc);
             });
         });
 
@@ -392,12 +453,12 @@
             const menuItem = document.createElement('div');
             menuItem.className = 'p-4 border border-gray-300 rounded-lg';
             menuItem.innerHTML = `
-            <h2 class="text-xl font-semibold">ID: ${item.id}</h2>
-            <h2 class="text-xl font-semibold">${item.name}</h2>
-            <p class="text-gray-600">Harga: Rp${item.price}</p>
-            <p class="text-gray-600">Stok: ${item.stock}</p>
-            <img src="${item.image}" alt="${item.name}" class="mt-2 w-32 h-32 object-cover rounded-lg">
-        `;
+                <h2 class="text-xl font-semibold">ID: ${item.id}</h2>
+                <h2 class="text-xl font-semibold">${item.name}</h2>
+                <p class="text-gray-600">Harga: Rp${item.price}</p>
+                <p class="text-gray-600">Stok: ${item.stock}</p>
+                <img src="${item.image}" alt="${item.name}" class="mt-2 w-32 h-32 object-cover rounded-lg">
+            `;
             menuList.appendChild(menuItem);
         });
     }

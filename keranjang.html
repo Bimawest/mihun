@@ -262,35 +262,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <script>
 function sendWhatsAppMessage3() {
+    const CART_KEY_3 = 'cartItems3'; // Kunci localStorage untuk keranjang 3
     const cartItems = JSON.parse(localStorage.getItem(CART_KEY_3)) || [];
 
-    // Group items by name and sum their quantities
+    // Group items by name and sum their quantities and total prices
     const groupedItems = cartItems.reduce((acc, item) => {
         if (acc[item.itemName]) {
             acc[item.itemName].quantity += item.quantity;
+            acc[item.itemName].totalPrice += item.price * item.quantity;
         } else {
-            acc[item.itemName] = { ...item };
+            acc[item.itemName] = { ...item, totalPrice: item.price * item.quantity };
         }
         return acc;
     }, {});
 
-    // Convert the grouped items to a string
+    // Convert the grouped items to a string with only item name and quantity (no price)
     const cartItemsString = Object.values(groupedItems)
         .map(item => `${item.itemName} (${item.quantity})`)
-        .join('\n');
+        .join('\\n');
+
+    // Calculate total payment
+    const totalPayment = Object.values(groupedItems).reduce((acc, item) => acc + item.totalPrice, 0);
 
     const currentDate = new Date();
     const formattedDate = currentDate.toLocaleDateString('id-ID');
     const formattedTime = currentDate.toLocaleTimeString('id-ID');
 
-    const message = `Hallo kak, saya igin memesan:\n${cartItemsString}\n\nTanggal: ${formattedDate}\nWaktu: ${formattedTime} apakah masih tersedia`;
+    const message = `Hallo min, saya ingin memesan:\n${cartItemsString}\n\nTotal Pembayaran: Rp ${totalPayment.toLocaleString()}\n\nsaya memesan pada:\nTanggal: ${formattedDate}\nWaktu: ${formattedTime}\n\napakah masih tersedia`;
     const encodedMessage = encodeURIComponent(message);
     const phoneNumber = '6282153547397'; // Ganti dengan nomor WhatsApp yang sesuai
     const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
     window.open(whatsappLink, '_blank');
 }
-    </script>
+
+</script>
 
 </body>
 

@@ -95,6 +95,27 @@ body{
    font-weight: bold;
  }
  
+ .slider {
+  display: flex; /* Agar elemen <p> berada dalam satu baris */
+  white-space: nowrap; /* Mencegah teks turun ke baris baru */
+  overflow: hidden; /* Menyembunyikan teks yang keluar dari batas */
+  gap: 2rem;
+}
+
+.slider p {
+  animation: slideLeft 9s linear infinite; /* Nama animasi, durasi, jenis animasi, dan pengulangan */
+  z-index: 999;
+}
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(23%); /* Mulai dari posisi di luar kanan */
+  }
+  100% {
+    transform: translateX(-200%); /* Berakhir di posisi di luar kiri (lebar elemen) */
+  }
+}
+ 
  .hero {
     display: flex;
     align-items: center;

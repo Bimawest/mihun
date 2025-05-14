@@ -34,6 +34,11 @@
         <p>buat pesananmu dan ambil di tempat</p>
       </div>
     </main>
+    
+    <section class="info">
+      <h1> WE ARE OPEN NOW </h1>
+      <h2> SORRY WE ARE CLOSED </h2>
+    </section>
 
     <section class="hero">
         <div class="hero-content">
@@ -473,6 +478,29 @@
 
     // Panggil fungsi displayMenu saat halaman dimuat
     displayMenu();
+</script>
+
+<script>
+  function updateInfoDisplay() {
+  const now = new Date();
+  const hours = now.getHours();
+  const infoH1 = document.querySelector('.info h1');
+  const infoH2 = document.querySelector('.info h2');
+
+  if (hours >= 4 && hours < 10) {
+    infoH1.style.display = 'block';
+    infoH2.style.display = 'none';
+  } else {
+    infoH1.style.display = 'none';
+    infoH2.style.display = 'block';
+  }
+}
+
+// Panggil fungsi saat halaman dimuat
+updateInfoDisplay();
+
+// Perbarui tampilan setiap menit (opsional, untuk perubahan waktu yang lebih dinamis)
+setInterval(updateInfoDisplay, 60000);
 </script>
 
 

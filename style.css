@@ -95,6 +95,15 @@ body{
    font-weight: bold;
  }
  
+ main a {
+   margin: 10px;
+   display: flex;
+   justify-content: end;
+   color: black;
+   font-size: 16px;
+   text-decoration: none;
+ }
+ 
  .slider {
   display: flex; /* Agar elemen <p> berada dalam satu baris */
   white-space: nowrap; /* Mencegah teks turun ke baris baru */
@@ -384,6 +393,9 @@ main h1 {
    text-align: start;
    list-style-type: none;
    color: black;
+   -webkit-text-stroke: 0.4px white;
+  -moz-text-stroke-width: 0.4px;
+  -moz-text-stroke-color: white;
  }
  
  .content {
@@ -543,5 +555,3 @@ main h1 {
    cursor: pointer;
  }
  }
- 
- 

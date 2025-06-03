@@ -9,10 +9,10 @@
       rel="stylesheet"
     />
   <link rel="stylesheet" href="style.css"/>
-  <title>Document</title>
+  <title>MIHUN LEGENDA</title>
 </head>
 <body>
-  <!-- Header Section --><header class="header">
+  <header class="header">
         <div class="container">
             <div class="logo-container">
                 <img id="logo" alt="Logo from meta" src="logo.jpeg" />
@@ -21,22 +21,21 @@
             <nav class="nav">
                 <a href="keranjang.html" title="Shopping Cart">
                     <i class="fas fa-shopping-cart"></i>
-                    <span id="cart-badge" class="cart-badge">0</span> <!-- Badge untuk jumlah item -->
-                </a>
+                    <span id="cart-badge" class="cart-badge">0</span> </a>
             </nav>
         </div>
     </header>
-    
+
     <main>
       <a href="login.html" title="login-admin">login-admin</a>
-      
+
       <div class="slider">
         <p>buat pesananmu dan ambil di tempat</p>
         <p>buat pesananmu dan ambil di tempat</p>
         <p>buat pesananmu dan ambil di tempat</p>
       </div>
     </main>
-    
+
     <section class="info">
       <h1> WE ARE OPEN NOW </h1>
       <h2> SORRY WE ARE CLOSED </h2>
@@ -57,16 +56,15 @@
     </section>
 
 
-  <!-- Main Content -->
-    <main>
+  <main>
         <div class="slideshow">
     <div class="image-container" id="imgs">
         <div class="slide-item">
-            <img src="mihun.png" alt="">
+            <img src="mihun.png" alt="Mihun Terlaris">
             <h3 class="overlay-text">Terlaris</h3>
         </div>
         <div class="slide-item">
-            <img src="sayur3.png" alt="">
+            <img src="sayur3.png" alt="Menu Baru Sayur">
             <h3 class="overlay-text">Menu Baru</h3>
         </div>
     </div>
@@ -78,15 +76,12 @@
     </div>
 </div>
       <h1>Our Menu</h1>
-        <!-- Product Grid -->
         <section id="products" class="products">
                 <div class="product-grid">
-                    <!-- Product Item -->
                     <div class="product-item">
                       <div class="content"></div>
                         <img alt="mihun" src="mihun.png" />
                         <h3>Mihun</h3>
-                        <p></p>
                         <p class="price">Rp5.000</p>
                         <button id="btnmenu" class="add-to-cart">
                             Detail
@@ -95,17 +90,18 @@
                             <button class="minus">-</button>
                             <input type="text" value="0" class="quantity">
                             <button class="plus">+</button>
-                            <button class="cart" data-img="mihun.png" data-name="mihun">
+                            <button class="cart" data-img="mihun.png" data-name="Mihun" data-price="5000">
                                 <i class="fas fa-shopping-cart"></i>
                             </button>
                         </div>
                     </div>
-                    <!--box deskripsi menu-->
                     <div class="description">
                         <img src="mihun.png" alt="" />
-                        <h3>mihun</h3>
+                        <h3>Mihun</h3>
                         <p>
-                            (penjelasan product)
+                            Mihun Legenda, cita rasa klasik dengan bumbu rempah pilihan,
+                            disajikan hangat dengan taburan bawang goreng renyah.
+                            Cocok untuk sarapan atau camilan kapan saja.
                         </p>
                         <button class="btndes">O K</button>
                     </div>
@@ -116,36 +112,38 @@
                         <h3>Nasikuning</h3>
                         <ul id="nasiKuningList">
                           <li>
-                            <input type="checkbox" name="Ayam" data-name="Ayam" id="" value="yes"/>
-                            <label for="Ayam">Ayam</label>
-                            <br>
-                            <input type="checkbox" name="Ikan" data-name="Ikan" id=""/>
-                            <label for="Ikan">Ikan</label>
-                            <br>
-                            <input type="checkbox" name="Telur" data-name="Telur" id=""/>
-                            <label for="Telur">Telur</label>
+                            <input type="checkbox" name="Ayam" data-name="Ayam" id="AyamCheckbox" />
+                            <label for="AyamCheckbox">Ayam</label>
+                          </li>
+                          <li>
+                            <input type="checkbox" name="Ikan" data-name="Ikan" id="IkanCheckbox"/>
+                            <label for="IkanCheckbox">Ikan</label>
+                          </li>
+                          <li>
+                            <input type="checkbox" name="Telur" data-name="Telur" id="TelurCheckbox"/>
+                            <label for="TelurCheckbox">Telur</label>
                           </li>
                         </ul>
-                        <p></p>
                         <p class="price">Rp10.000</p>
                         <button id="btnmenu" class="add-to-cart">
                             Detail
                         </button>
                         <div class="jumblah">
-                            <button class="minus">-</button>
-                            <input type="text" value="0" class="quantity">
-                            <button class="plus">+</button>
-                            <button class="cart" data-img="nasikuning.png">
+                            <button class="minus" disabled>-</button>
+                            <input type="text" value="0" class="quantity" readonly>
+                            <button class="plus" disabled>+</button>
+                            <button class="cart" data-img="nasikuning.png" data-name="Nasikuning" data-price="10000" disabled>
                                 <i class="fas fa-shopping-cart"></i>
                             </button>
                         </div>
                     </div>
-                    <!--box deskripsi menu-->
                     <div class="description">
                         <img src="nasikuning.png" alt="" />
-                        <h3>nasikuning</h3>
+                        <h3>Nasikuning</h3>
                         <p>
-                            (penjelasan product)
+                            Nasi Kuning pulen dengan aroma rempah khas, disajikan
+                            dengan pilihan lauk ayam goreng, ikan suwir, atau telur dadar.
+                            Porsi mengenyangkan untuk memulai hari.
                         </p>
                         <button class="btndes">O K</button>
                     </div>
@@ -154,7 +152,6 @@
                       <div class="content"></div>
                         <img alt="Nasiburger" src="nasiburger.png"/>
                         <h3>Nasiburger</h3>
-                        <p></p>
                         <p class="price">Rp5.000</p>
                         <button id="btnmenu" class="add-to-cart">
                             Detail
@@ -163,17 +160,18 @@
                             <button class="minus">-</button>
                             <input type="text" value="0" class="quantity">
                             <button class="plus">+</button>
-                            <button class="cart" data-img="nasiburger.png" data-name="Nasiburger">
+                            <button class="cart" data-img="nasiburger.png" data-name="Nasiburger" data-price="5000">
                                 <i class="fas fa-shopping-cart"></i>
                             </button>
                         </div>
                     </div>
-                    <!--box deskripsi menu-->
                     <div class="description">
                         <img src="nasiburger.png" alt="" />
                         <h3>Nasiburger</h3>
                         <p>
-                            (penjelasan product)
+                            Inovasi unik dari nasi yang dibentuk menyerupai burger,
+                            dengan isian daging cincang gurih, sayuran segar, dan saus spesial.
+                            Perpaduan cita rasa modern dan tradisional.
                         </p>
                         <button class="btndes">O K</button>
                     </div>
@@ -184,48 +182,54 @@
                         <h3>Aneka Kue</h3>
                         <ul id="anekaKueList">
                           <li>
-                            <input type="checkbox" name="TahuIsi" data-name="Tahu isi" id=""/>
-                            <label for="TahuIsi">Tahu Isi</label>
-                            <br>
-                             <input type="checkbox" name="Ote-ote" data-name="Ote-ote" id=""/>
-                            <label for="Ote-ote">Ote-ote</label>
-                            <br>
-                             <input type="checkbox" name="Lumpia" data-name="Lumpia" id=""/>
-                            <label for="Lumpia">Lumpia</label>
-                            <br>
-                             <input type="checkbox" name="Untuk-untuk" data-name="Untuk-untuk" id=""/>
-                            <label for="Untuk-untuk">Untuk-untuk</label>
-                            <br>
-                             <input type="checkbox" name="donat" data-name="donat" id=""/>
-                            <label for="donat">donat</label>
-                            <br>
-                             <input type="checkbox" name="getas" data-name="getas" id=""/>
-                            <label for="getas">getas</label>
-                            <br>
-                             <input type="checkbox" name="dadar gulung" data-name="dadar gulung" id=""/>
-                            <label for="dadar gulung">dadar gulung</label>
+                            <input type="checkbox" name="TahuIsi" data-name="Tahu isi" id="TahuIsiCheckbox"/>
+                            <label for="TahuIsiCheckbox">Tahu Isi</label>
+                          </li>
+                          <li>
+                             <input type="checkbox" name="Ote-ote" data-name="Ote-ote" id="OteOteCheckbox"/>
+                            <label for="OteOteCheckbox">Ote-ote</label>
+                          </li>
+                          <li>
+                             <input type="checkbox" name="Lumpia" data-name="Lumpia" id="LumpiaCheckbox"/>
+                            <label for="LumpiaCheckbox">Lumpia</label>
+                          </li>
+                          <li>
+                             <input type="checkbox" name="Untuk-untuk" data-name="Untuk-untuk" id="UntukUntukCheckbox"/>
+                            <label for="UntukUntukCheckbox">Untuk-untuk</label>
+                          </li>
+                          <li>
+                             <input type="checkbox" name="donat" data-name="donat" id="DonatCheckbox"/>
+                            <label for="DonatCheckbox">donat</label>
+                          </li>
+                          <li>
+                             <input type="checkbox" name="getas" data-name="getas" id="GetasCheckbox"/>
+                            <label for="GetasCheckbox">getas</label>
+                          </li>
+                          <li>
+                             <input type="checkbox" name="dadar gulung" data-name="dadar gulung" id="DadarGulungCheckbox"/>
+                            <label for="DadarGulungCheckbox">dadar gulung</label>
                           </li>
                         </ul>
-                        <p></p>
                         <p class="price">Rp5.000</p>
                         <button id="btnmenu" class="add-to-cart">
                             Detail
                         </button>
                         <div class="jumblah">
-                            <button class="minus">-</button>
-                            <input type="text" value="0" class="quantity">
-                            <button class="plus">+</button>
-                            <button class="cart" data-img="gorengan.png">
+                            <button class="minus" disabled>-</button>
+                            <input type="text" value="0" class="quantity" readonly>
+                            <button class="plus" disabled>+</button>
+                            <button class="cart" data-img="gorengan.png" data-name="Aneka Kue" data-price="5000" disabled>
                                 <i class="fas fa-shopping-cart"></i>
                             </button>
                         </div>
                     </div>
-                    <!--box deskripsi menu-->
                     <div class="description">
                         <img src="gorengan.png" alt="" />
                         <h3>Aneka Kue</h3>
                         <p>
-                            (penjelasan product)
+                            Berbagai macam kue dan gorengan tradisional yang lezat dan
+                            cocok untuk camilan atau teman minum teh. Terbuat dari
+                            bahan-bahan segar pilihan.
                         </p>
                         <button class="btndes">O K</button>
                     </div>
@@ -236,45 +240,46 @@
                         <h3>Sayur Masak</h3>
                         <ul id="sayurMasakList">
                           <li>
-                            <input type="checkbox" name="Sayur Asem" data-name="Sayur Asem" id=""/>
-                            <label for="Sayur Asem">Sayur Asem</label>
-                            <br>
-                            <input type="checkbox" name="Sayur Sop" data-name="Sayur Sop" id=""/>
-                            <label for="Sayur Sop">Sayur Sop</label>
-                            <br>
-                            <input type="checkbox" name="Sayur Bening" data-name="Sayur Bening" id=""/>
-                            <label for="Sayur Bening">Sayur Bening</label>
+                            <input type="checkbox" name="Sayur Asem" data-name="Sayur Asem" id="SayurAsemCheckbox"/>
+                            <label for="SayurAsemCheckbox">Sayur Asem</label>
+                          </li>
+                          <li>
+                            <input type="checkbox" name="Sayur Sop" data-name="Sayur Sop" id="SayurSopCheckbox"/>
+                            <label for="SayurSopCheckbox">Sayur Sop</label>
+                          </li>
+                          <li>
+                            <input type="checkbox" name="Sayur Bening" data-name="Sayur Bening" id="SayurBeningCheckbox"/>
+                            <label for="SayurBeningCheckbox">Sayur Bening</label>
                           </li>
                         </ul>
-                        <p></p>
                         <p class="price">Rp10.000</p>
                         <button id="btnmenu" class="add-to-cart">
                             Detail
                         </button>
                         <div class="jumblah">
-                            <button class="minus">-</button>
-                            <input type="text" value="0" class="quantity">
-                            <button class="plus">+</button>
-                            <button class="cart" data-img="nasikuning.png">
+                            <button class="minus" disabled>-</button>
+                            <input type="text" value="0" class="quantity" readonly>
+                            <button class="plus" disabled>+</button>
+                            <button class="cart" data-img="sayur3.png" data-name="Sayur Masak" data-price="10000" disabled>
                                 <i class="fas fa-shopping-cart"></i>
                             </button>
                         </div>
                     </div>
-                    <!--box deskripsi menu-->
                     <div class="description">
                         <img src="sayur.png" alt="" />
-                        <h3>sayur masak</h3>
+                        <h3>Sayur Masak</h3>
                         <p>
-                            (penjelasan product)
+                            Aneka sayur masak dengan resep rumahan yang lezat dan sehat.
+                            Pilihan sempurna untuk melengkapi hidangan utama Anda.
+                            Segar dan bergizi.
                         </p>
                         <button class="btndes">O K</button>
                     </div>
-        </div>
-      </div>
-    </section>
-  </main>
+                </div>
+        </section>
+    </main>
 
-  <section class="best-potatoes">
+    <section class="best-potatoes">
         <div class="potatoes-content">
             <h2>Our branch is now in Balikpapan city</h2>
             <p>cita rasa MIHUN LEGENDA kini bisa kalian temukan di Balikpapan, klik tombol di bawah untuk memesan sekarang.</p>
@@ -285,8 +290,7 @@
         </div>
     </section>
 
-  <!-- Footer Section -->
-    <footer class="footer">
+  <footer class="footer">
         <iframe
     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15956.998175777242!2d117.1617682!3d-0.9674688999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df6a99baeba80b9%3A0xb19d99ca66befb05!2sTj.%20Harapan-Jalan%20Samboja-Muara%20Jawa!5e0!3m2!1sen!2sid!4v1745917068081!5m2!1sen!2sid"
     width="100%" height="300" style="border:2px dashed black; border-radius: 25px;" allowfullscreen=""
@@ -321,11 +325,11 @@
     document.addEventListener("DOMContentLoaded", () => {
         const addToCartButtons = document.querySelectorAll(".cart");
         const cartBadge = document.getElementById("cart-badge");
-        const CART_KEY_3 = 'cartItems3'; // PERUBAHAN UNTUK KERANJANG 3 - Definisikan kunci keranjang 3
+        const CART_KEY_3 = 'cartItems3'; // Definisikan kunci keranjang 3
 
         // Fungsi untuk memperbarui badge keranjang
         function updateCartBadge() {
-            const cartItems = JSON.parse(localStorage.getItem(CART_KEY_3)) || []; // PERUBAHAN UNTUK KERANJANG 3 - Gunakan kunci keranjang 3
+            const cartItems = JSON.parse(localStorage.getItem(CART_KEY_3)) || []; // Gunakan kunci keranjang 3
             cartBadge.textContent = cartItems.length; // Update jumlah item di badge
 
             // Sembunyikan badge jika jumlah item adalah 0
@@ -345,15 +349,35 @@
                 const productItem = button.closest(".product-item");
                 let cartItems = JSON.parse(localStorage.getItem(CART_KEY_3)) || [];
 
-                // Tangani item non-"Nasikuning" dan non-"Aneka Kue"
                 const imgSrc = button.getAttribute("data-img");
                 const itemName = button.getAttribute("data-name");
-                const quantityInput = productItem.querySelector(".quantity");
+                const price = parseFloat(button.getAttribute("data-price")); // Ambil harga dari data-price
 
-                if (imgSrc && itemName && quantityInput) {
+                // Cek apakah ini produk dengan checkbox
+                const isCheckboxProduct = ['Nasikuning', 'Aneka Kue', 'Sayur Masak'].includes(itemName);
+
+                if (isCheckboxProduct) {
+                    const checkedCheckboxes = productItem.querySelectorAll('input[type="checkbox"]:checked');
+                    if (checkedCheckboxes.length === 0) {
+                        alert("Pilih setidaknya satu topping/jenis untuk menu ini.");
+                        return; // Hentikan proses jika tidak ada checkbox yang dicentang
+                    }
+
+                    checkedCheckboxes.forEach((checkbox) => {
+                        const optionName = checkbox.getAttribute("data-name");
+                        const itemToAdd = {
+                            imgSrc: imgSrc,
+                            itemName: `${itemName} (${optionName})`, // Gabungkan nama item dan pilihan
+                            quantity: 1, // Setiap pilihan dihitung 1
+                            price: price, // Harga per pilihan
+                        };
+                        cartItems.push(itemToAdd);
+                        animateImageToCart(imgSrc);
+                    });
+                } else {
+                    // Logika untuk produk tanpa checkbox (Mihun, Nasiburger)
+                    const quantityInput = productItem.querySelector(".quantity");
                     const quantity = parseInt(quantityInput.value);
-                    const priceElement = productItem.querySelector(".price");
-                    const price = priceElement ? parseInt(priceElement.textContent.replace("Rp", "").replace(".", "")) : 0;
 
                     if (isNaN(quantity) || quantity <= 0) {
                         alert("Jumlah barang harus lebih dari 0!");
@@ -368,58 +392,6 @@
                     };
                     cartItems.push(cartItem);
                     animateImageToCart(imgSrc);
-                } else {
-                    // Tangani item "Aneka Kue" (Gorengan) dengan checkbox
-                    if (productItem.querySelector('h3').textContent.trim() === 'Aneka Kue') {
-                        const checkboxes = productItem.querySelectorAll('input[type="checkbox"]:checked');
-                        const anekaKuePrice = parseInt(productItem.querySelector(".price").textContent.replace("Rp", "").replace(".", ""));
-
-                        checkboxes.forEach((checkbox) => {
-                            const kueName = checkbox.getAttribute("data-name");
-                            const kueItem = {
-                                imgSrc: "gorengan.png", // Gunakan gambar umum untuk aneka kue
-                                itemName: kueName,
-                                quantity: 1,
-                                price: anekaKuePrice,
-                            };
-                            cartItems.push(kueItem);
-                            animateImageToCart("gorengan.png");
-                        });
-                    }
-                    // Tangani item "Nasikuning" dengan checkbox
-                    else if (productItem.querySelector('h3').textContent.trim() === 'Nasikuning') {
-                        const checkboxes = productItem.querySelectorAll('input[type="checkbox"]:checked');
-                        const nasikuningPrice = parseInt(productItem.querySelector(".price").textContent.replace("Rp", "").replace(".", ""));
-
-                        checkboxes.forEach((checkbox) => {
-                            const laukName = checkbox.getAttribute("data-name");
-                            const nasikuningItem = {
-                                imgSrc: "nasikuning.png", // Gunakan gambar umum untuk nasikuning
-                                itemName: `Nasikuning (${laukName})`, // Tambahkan nama lauk ke nama item
-                                quantity: 1,
-                                price: nasikuningPrice,
-                            };
-                            cartItems.push(nasikuningItem);
-                            animateImageToCart("nasikuning.png");
-                        });
-                    }
-                    // Tangani item "Sayur Masak" dengan checkbox
-                if (productItem.querySelector('h3').textContent.trim() === 'Sayur Masak') {
-                    const checkboxes = productItem.querySelectorAll('input[type="checkbox"]:checked');
-                    const sayurMasakPrice = parseInt(productItem.querySelector(".price").textContent.replace("Rp", "").replace(".", ""));
-
-                    checkboxes.forEach((checkbox) => {
-                        const laukName = checkbox.getAttribute("data-name");
-                        const sayurMasakItem = {
-                            imgSrc: "sayur3.png", // Gambar umum untuk sayur masak
-                            itemName: `Sayur Masak (${laukName})`, // Tambahkan nama lauk ke nama item
-                            quantity: 1,
-                            price: sayurMasakPrice,
-                        };
-                        cartItems.push(sayurMasakItem);
-                        animateImageToCart("sayur3.png");
-                    });
-                }
                 }
 
                 localStorage.setItem(CART_KEY_3, JSON.stringify(cartItems));
@@ -436,24 +408,26 @@
             img.style.height = "50px";
             img.style.borderRadius = "50%";
             img.style.transition = "all 1s ease";
+            img.style.zIndex = "9999"; // Pastikan gambar muncul di atas elemen lain
             document.body.appendChild(img);
 
             const cartIcon = document.querySelector(".fa-shopping-cart");
             const cartIconRect = cartIcon.getBoundingClientRect();
 
-            const imgRect = img.getBoundingClientRect();
-            const startX = imgRect.left;
-            const startY = imgRect.top;
-            const endX = cartIconRect.left + cartIconRect.width / 2 - imgRect.width / 2;
-            const endY = cartIconRect.top + cartIconRect.height / 2 - imgRect.height / 2;
+            // Set posisi awal gambar animasi dari tengah tombol cart yang diklik
+            const clickedButton = event.target.closest('.cart');
+            const buttonRect = clickedButton.getBoundingClientRect();
+            img.style.left = `${buttonRect.left + buttonRect.width / 2 - img.width / 2}px`;
+            img.style.top = `${buttonRect.top + buttonRect.height / 2 - img.height / 2}px`;
 
-            img.style.left = `${startX}px`;
-            img.style.top = `${startY}px`;
 
             setTimeout(() => {
+                const endX = cartIconRect.left + cartIconRect.width / 2 - img.width / 2;
+                const endY = cartIconRect.top + cartIconRect.height / 2 - img.height / 2;
                 img.style.left = `${endX}px`;
                 img.style.top = `${endY}px`;
-                img.style.opacity = "1";
+                img.style.opacity = "0.5"; // Sedikit transparan saat terbang
+                img.style.transform = "scale(0.5)"; // Mengecil saat terbang
             }, 10);
 
             setTimeout(() => {
@@ -496,72 +470,121 @@
         const plusButtons = document.querySelectorAll(".plus");
         const cartButtons = document.querySelectorAll(".cart");
 
-        // Fungsi untuk memeriksa dan mengatur status tombol keranjang
-        function updateCartButtonState(input, cartButton) {
-            if (parseInt(input.value) === 0) {
-                cartButton.disabled = true; // Nonaktifkan tombol jika nilai input adalah 0
-            } else {
-                cartButton.disabled = false; // Aktifkan tombol jika nilai input lebih dari 0
+        // Helper function to check if any checkbox in a given list is checked
+        function isAnyCheckboxChecked(listElement) {
+            if (!listElement) return false;
+            const checkboxes = listElement.querySelectorAll('input[type="checkbox"]');
+            for (let i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    return true;
+                }
             }
+            return false;
         }
 
-        // Fungsi untuk tombol minus
+        // Function to update the state of quantity buttons and the cart button
+        function updateQuantityAndCartButtonState(productItem) {
+            const quantityInput = productItem.querySelector(".quantity");
+            const cartButton = productItem.querySelector(".cart");
+            const minusButton = productItem.querySelector(".minus");
+            const plusButton = productItem.querySelector(".plus");
+
+            const productName = productItem.querySelector('h3').textContent.trim();
+
+            let shouldDisableQuantityButtons = false;
+            let shouldDisableCartButton = false;
+
+            // Logic for products with checkboxes
+            if (productName === 'Nasikuning' || productName === 'Aneka Kue' || productName === 'Sayur Masak') {
+                const listElement = productItem.querySelector('ul');
+                if (!isAnyCheckboxChecked(listElement)) {
+                    shouldDisableQuantityButtons = true;
+                    shouldDisableCartButton = true;
+                    quantityInput.value = 0; // Reset quantity if no checkbox is selected
+                } else {
+                    // If checkboxes are checked, enable quantity buttons, but only allow cart if quantity > 0
+                    shouldDisableQuantityButtons = false;
+                    shouldDisableCartButton = (parseInt(quantityInput.value) === 0);
+                }
+            }
+            // Logic for products without checkboxes (e.g., Mihun, Nasiburger)
+            else {
+                shouldDisableQuantityButtons = false; // Always enabled for these
+                shouldDisableCartButton = (parseInt(quantityInput.value) === 0);
+            }
+
+            // Apply disabled state
+            minusButton.disabled = shouldDisableQuantityButtons;
+            plusButton.disabled = shouldDisableQuantityButtons;
+            cartButton.disabled = shouldDisableCartButton;
+        }
+
+        // Event listener for minus buttons
         minusButtons.forEach((button) => {
             button.addEventListener("click", () => {
-                const input = button.nextElementSibling; // Ambil input yang bersebelahan
-                let value = parseInt(input.value); // Ambil nilai input dan ubah ke integer
-                if (value > 0) { // Pastikan nilai tidak kurang dari 1
-                    input.value = value - 1; // Kurangi nilai
-                } else {
-                    input.value = 0; // Set nilai ke 0 jika kurang dari 1
+                const productItem = button.closest(".product-item");
+                const quantityInput = productItem.querySelector(".quantity");
+                let value = parseInt(quantityInput.value);
+                if (value > 0) {
+                    quantityInput.value = value - 1;
                 }
-                // Perbarui status tombol keranjang
-                const cartButton = button.parentElement.querySelector(".cart");
-                updateCartButtonState(input, cartButton);
+                updateQuantityAndCartButtonState(productItem);
             });
         });
 
-        // Fungsi untuk tombol plus
+        // Event listener for plus buttons
         plusButtons.forEach((button) => {
             button.addEventListener("click", () => {
-                const input = button.previousElementSibling; // Ambil input yang bersebelahan
-                let value = parseInt(input.value); // Ambil nilai input dan ubah ke integer
-                input.value = value + 1; // Tambahkan nilai
-                // Perbarui status tombol keranjang
-                const cartButton = button.parentElement.querySelector(".cart");
-                updateCartButtonState(input, cartButton);
+                const productItem = button.closest(".product-item");
+                const quantityInput = productItem.querySelector(".quantity");
+                let value = parseInt(quantityInput.value);
+                quantityInput.value = value + 1;
+                updateQuantityAndCartButtonState(productItem);
             });
         });
 
-        // Inisialisasi status tombol keranjang saat halaman dimuat
-        cartButtons.forEach((cartButton) => {
-            const input = cartButton.parentElement.querySelector(".quantity");
-            updateCartButtonState(input, cartButton);
+        // Event listener for checkboxes (for Nasikuning, Aneka Kue, Sayur Masak)
+        document.querySelectorAll('.product-item ul input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', (event) => {
+                const productItem = event.target.closest('.product-item');
+                updateQuantityAndCartButtonState(productItem);
+            });
+        });
+
+
+        // Initialize the state of all quantity and cart buttons when the page loads
+        document.querySelectorAll(".product-item").forEach(productItem => {
+            updateQuantityAndCartButtonState(productItem);
         });
     });
 </script>
 
 <script>
     // Ambil data menu dari localStorage
-    const menuItems = JSON.parse(localStorage.getItem('menuItems3')) || []; // PERUBAHAN UNTUK KERANJANG 3 - Kunci menu spesifik
+    const menuItems = JSON.parse(localStorage.getItem('menuItems3')) || []; // Kunci menu spesifik
 
     // Fungsi untuk menampilkan menu
+    // Catatan: Bagian ini tampaknya untuk halaman admin atau tampilan yang berbeda,
+    // karena Anda tidak memiliki elemen dengan ID 'menuList' di HTML utama.
+    // Jadi, fungsi ini tidak akan berpengaruh pada tampilan produk di halaman ini.
     function displayMenu() {
         const menuList = document.getElementById('menuList');
-        menuList.innerHTML = '';
+        if (menuList) { // Periksa apakah elemen ada
+            menuList.innerHTML = '';
 
-        menuItems.forEach(item => {
-            const menuItem = document.createElement('div');
-            menuItem.className = 'p-4 border border-gray-300 rounded-lg';
-            menuItem.innerHTML = `
-                <h2 class="text-xl font-semibold">ID: ${item.id}</h2>
-                <h2 class="text-xl font-semibold">${item.name}</h2>
-                <p class="text-gray-600">Harga: Rp${item.price}</p>
-                <p class="text-gray-600">Stok: ${item.stock}</p>
-                <img src="${item.image}" alt="${item.name}" class="mt-2 w-32 h-32 object-cover rounded-lg">
-            `;
-            menuList.appendChild(menuItem);
-        });
+            menuItems.forEach(item => {
+                const menuItem = document.createElement('div');
+                menuItem.className = 'p-4 border border-gray-300 rounded-lg'; // Kelas Tailwind CSS
+                menuItem.innerHTML = `
+                    <h2 class="text-xl font-semibold">ID: ${item.id}</h2>
+                    <h2 class="text-xl font-semibold">${item.name}</h2>
+                    <p class="text-gray-600">Harga: Rp${item.price}</p>
+                    <p class="text-gray-600">Stok: ${item.stock}</p>
+                    <img src="${item.image}" alt="${item.name}" class="mt-2 w-32 h-32 object-cover rounded-lg">
+                `;
+                menuList.appendChild(menuItem);
+            });
+        }
     }
 
     // Panggil fungsi displayMenu saat halaman dimuat
@@ -569,19 +592,19 @@
 </script>
 
 <script>
-  function updateInfoDisplay() {
-  const now = new Date();
-  const hours = now.getHours();
-  const infoH1 = document.querySelector('.info h1');
-  const infoH2 = document.querySelector('.info h2');
+    function updateInfoDisplay() {
+    const now = new Date();
+    const hours = now.getHours();
+    const infoH1 = document.querySelector('.info h1');
+    const infoH2 = document.querySelector('.info h2');
 
-  if (hours >= 4 && hours < 10) {
-    infoH1.style.display = 'block';
-    infoH2.style.display = 'none';
-  } else {
-    infoH1.style.display = 'none';
-    infoH2.style.display = 'block';
-  }
+    if (hours >= 4 && hours < 10) { // Contoh: Buka dari jam 4 pagi sampai 10 pagi
+        infoH1.style.display = 'block';
+        infoH2.style.display = 'none';
+    } else {
+        infoH1.style.display = 'none';
+        infoH2.style.display = 'block';
+    }
 }
 
 // Panggil fungsi saat halaman dimuat
@@ -592,8 +615,8 @@ setInterval(updateInfoDisplay, 60000);
 </script>
 
 <script>
-  //script untuk merespon data admin
-       // --- Load Checkbox States from LocalStorage ---
+    //script untuk merespon data admin
+        // --- Load Checkbox States from LocalStorage ---
             function loadCheckboxStates(key, containerId) {
                 const data = JSON.parse(localStorage.getItem(key)) || {};
                 const container = document.getElementById(containerId);
@@ -624,7 +647,7 @@ setInterval(updateInfoDisplay, 60000);
                     });
 
                     // Only add new items if they are "checked" in admin and not already present
-                    if (!found && item.checked) { 
+                    if (!found && item.checked) {
                         const listItem = document.createElement('li');
                         listItem.innerHTML = `
                             <input type="checkbox" name="${item.name}" data-name="${item.name}" id="${containerId}${item.name.replace(/\s/g, '')}Checkbox"/>
@@ -639,13 +662,13 @@ setInterval(updateInfoDisplay, 60000);
             loadCheckboxStates('nasiKuning', 'nasiKuningList');
             loadCheckboxStates('anekaKue', 'anekaKueList');
             loadCheckboxStates('sayurMasak', 'sayurMasakList');
-  </script>
+    </script>
 
-  <script>
+    <script>
     // Script untuk slideshow gambar
 document.addEventListener("DOMContentLoaded", () => {
     // Kita sekarang menargetkan setiap 'slide-item' (div yang membungkus img dan h3)
-    const slideItems = document.querySelectorAll("#imgs .slide-item"); 
+    const slideItems = document.querySelectorAll("#imgs .slide-item");
     const prevButton = document.getElementById("pre");
     const nextButton = document.getElementById("next");
     let currentIndex = 0; // Mulai dengan item slide pertama
@@ -654,7 +677,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function updateSlide() {
         slideItems.forEach((item, index) => {
             // Tampilkan item slide saat ini, sembunyikan yang lain
-            item.style.display = index === currentIndex ? "block" : "none"; 
+            item.style.display = index === currentIndex ? "block" : "none";
         });
     }
 
@@ -673,8 +696,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Inisialisasi tampilan item slide pertama
     updateSlide();
 });
-  </script>
+    </script>
 
-  
+
 </body>
 </html>

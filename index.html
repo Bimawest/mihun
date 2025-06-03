@@ -59,6 +59,24 @@
 
   <!-- Main Content -->
     <main>
+        <div class="slideshow">
+    <div class="image-container" id="imgs">
+        <div class="slide-item">
+            <img src="mihun.png" alt="">
+            <h3 class="overlay-text">Terlaris</h3>
+        </div>
+        <div class="slide-item">
+            <img src="sayur3.png" alt="">
+            <h3 class="overlay-text">Menu Baru</h3>
+        </div>
+    </div>
+
+    <div class="button-container">
+        <button id="pre" class="btn pre">
+            <</button>
+        <button id="next" class="btn next">></button>
+    </div>
+</div>
       <h1>Our Menu</h1>
         <!-- Product Grid -->
         <section id="products" class="products">
@@ -271,7 +289,7 @@
     <footer class="footer">
         <iframe
     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15956.998175777242!2d117.1617682!3d-0.9674688999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df6a99baeba80b9%3A0xb19d99ca66befb05!2sTj.%20Harapan-Jalan%20Samboja-Muara%20Jawa!5e0!3m2!1sen!2sid!4v1745917068081!5m2!1sen!2sid"
-    width="100%" height="500" style="border:2px dashed black; border-radius: 25px;" allowfullscreen=""
+    width="100%" height="300" style="border:2px dashed black; border-radius: 25px;" allowfullscreen=""
     loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
         <div class="container">
@@ -623,5 +641,40 @@ setInterval(updateInfoDisplay, 60000);
             loadCheckboxStates('sayurMasak', 'sayurMasakList');
   </script>
 
+  <script>
+    // Script untuk slideshow gambar
+document.addEventListener("DOMContentLoaded", () => {
+    // Kita sekarang menargetkan setiap 'slide-item' (div yang membungkus img dan h3)
+    const slideItems = document.querySelectorAll("#imgs .slide-item"); 
+    const prevButton = document.getElementById("pre");
+    const nextButton = document.getElementById("next");
+    let currentIndex = 0; // Mulai dengan item slide pertama
+
+    // Fungsi untuk memperbarui item slide yang ditampilkan
+    function updateSlide() {
+        slideItems.forEach((item, index) => {
+            // Tampilkan item slide saat ini, sembunyikan yang lain
+            item.style.display = index === currentIndex ? "block" : "none"; 
+        });
+    }
+
+    // Event listener untuk tombol sebelumnya
+    prevButton.addEventListener("click", () => {
+        currentIndex = (currentIndex > 0) ? currentIndex - 1 : slideItems.length - 1; // Pergi ke item sebelumnya atau putar ke yang terakhir
+        updateSlide();
+    });
+
+    // Event listener untuk tombol berikutnya
+    nextButton.addEventListener("click", () => {
+        currentIndex = (currentIndex < slideItems.length - 1) ? currentIndex + 1 : 0; // Pergi ke item berikutnya atau putar ke yang pertama
+        updateSlide();
+    });
+
+    // Inisialisasi tampilan item slide pertama
+    updateSlide();
+});
+  </script>
+
+  
 </body>
 </html>

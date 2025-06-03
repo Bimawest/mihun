@@ -356,26 +356,48 @@
                 // Cek apakah ini produk dengan checkbox
                 const isCheckboxProduct = ['Nasikuning', 'Aneka Kue', 'Sayur Masak'].includes(itemName);
 
+                // Jika produk memiliki checkbox, pastikan setidaknya satu checkbox dipilih
                 if (isCheckboxProduct) {
                     const checkedCheckboxes = productItem.querySelectorAll('input[type="checkbox"]:checked');
                     if (checkedCheckboxes.length === 0) {
                         alert("Pilih setidaknya satu topping/jenis untuk menu ini.");
-                        return; // Hentikan proses jika tidak ada checkbox yang dicentang
+                        return;
                     }
+
+                    // Ambil kuantitas dari input kuantitas utama untuk menu ini
+                    const quantityInput = productItem.querySelector(".quantity");
+                    const baseQuantity = parseInt(quantityInput.value);
+
+                    if (isNaN(baseQuantity) || baseQuantity <= 0) {
+                        alert("Jumlah barang harus lebih dari 0!");
+                        return;
+                    }
+
 
                     checkedCheckboxes.forEach((checkbox) => {
                         const optionName = checkbox.getAttribute("data-name");
-                        const itemToAdd = {
-                            imgSrc: imgSrc,
-                            itemName: `${itemName} (${optionName})`, // Gabungkan nama item dan pilihan
-                            quantity: 1, // Setiap pilihan dihitung 1
-                            price: price, // Harga per pilihan
-                        };
-                        cartItems.push(itemToAdd);
-                        animateImageToCart(imgSrc);
+                        const fullItemName = `${itemName} (${optionName})`;
+
+                        // Cari apakah item dengan nama lengkap ini sudah ada di keranjang
+                        const existingItemIndex = cartItems.findIndex(item => item.itemName === fullItemName);
+
+                        if (existingItemIndex > -1) {
+                            // Jika item sudah ada, tambahkan kuantitasnya
+                            cartItems[existingItemIndex].quantity += baseQuantity;
+                        } else {
+                            // Jika item belum ada, tambahkan item baru
+                            const itemToAdd = {
+                                imgSrc: imgSrc,
+                                itemName: fullItemName,
+                                quantity: baseQuantity, // Gunakan baseQuantity
+                                price: price,
+                            };
+                            cartItems.push(itemToAdd);
+                        }
+                        animateImageToCart(imgSrc); // Animasi tetap berjalan
                     });
                 } else {
-                    // Logika untuk produk tanpa checkbox (Mihun, Nasiburger)
+                    // ... (logika untuk produk tanpa checkbox, yang sudah benar)
                     const quantityInput = productItem.querySelector(".quantity");
                     const quantity = parseInt(quantityInput.value);
 
@@ -384,16 +406,22 @@
                         return;
                     }
 
-                    const cartItem = {
-                        imgSrc: imgSrc,
-                        itemName: itemName,
-                        quantity: quantity,
-                        price: price,
-                    };
-                    cartItems.push(cartItem);
+                    // Cari apakah item tanpa pilihan sudah ada di keranjang
+                    const existingItemIndex = cartItems.findIndex(item => item.itemName === itemName);
+
+                    if (existingItemIndex > -1) {
+                        cartItems[existingItemIndex].quantity += quantity;
+                    } else {
+                        const cartItem = {
+                            imgSrc: imgSrc,
+                            itemName: itemName,
+                            quantity: quantity,
+                            price: price,
+                        };
+                        cartItems.push(cartItem);
+                    }
                     animateImageToCart(imgSrc);
                 }
-
                 localStorage.setItem(CART_KEY_3, JSON.stringify(cartItems));
                 updateCartBadge();
             });

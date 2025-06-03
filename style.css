@@ -179,6 +179,82 @@ main h1 {
   text-align: center;
 }
 
+.slideshow {
+    position: relative;
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    width: 280px;
+    height: 300px;
+    margin: 0;
+    border-radius: 10px;
+    border: 2px solid black;
+    overflow: hidden;
+}
+
+.slideshow img {
+    width: 280px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.overlay-text {
+    position: absolute; /* Posisikan teks secara absolut */
+    top: 5%; /* Sesuaikan posisi vertikal */
+    left: 50%; /* Sesuaikan posisi horizontal */
+    transform: translate(-50%, -50%); /* Pusatkan teks */
+    color: white; /* Warna teks agar terlihat di atas gambar */
+    background-color: rgba(0, 0, 0, 1); /* Latar belakang semi-transparan untuk keterbacaan */
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 10; /* Pastikan teks berada di atas gambar */
+    white-space: nowrap; /* Mencegah teks terpotong */
+}
+
+.image-container {
+    display: flex;
+    transform: translateX(0);
+    transition: transform 0.5s ease-in-out;
+}
+
+.button-container {
+    display: flex;
+    width: 100%;
+}
+
+.pre {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+}
+
+.next {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+}
+
+.btn {
+    padding: 5px 15px;
+    border-radius: 5px;
+    border: 2px solid white;
+    font-size: 24px;
+    text-align: center;
+    background: linear-gradient(90deg,
+            rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8));
+    color: white;
+    transition: 0.1s ease;
+    cursor: pointer;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.btn:focus {
+    outline: none;
+}
+
  /* Product Grid Styles */
  .products {
    padding: 2rem 0;

@@ -28,6 +28,8 @@
     </header>
     
     <main>
+      <a href="login.html" title="login-admin">login-admin</a>
+      
       <div class="slider">
         <p>buat pesananmu dan ambil di tempat</p>
         <p>buat pesananmu dan ambil di tempat</p>
@@ -94,9 +96,9 @@
                       <div class="content"></div>
                         <img alt="nasikuning" src="nasikuning.png" />
                         <h3>Nasikuning</h3>
-                        <ul>
+                        <ul id="nasiKuningList">
                           <li>
-                            <input type="checkbox" name="Ayam" data-name="Ayam" id=""/>
+                            <input type="checkbox" name="Ayam" data-name="Ayam" id="" value="yes"/>
                             <label for="Ayam">Ayam</label>
                             <br>
                             <input type="checkbox" name="Ikan" data-name="Ikan" id=""/>
@@ -162,7 +164,7 @@
                       <div class="content"></div>
                         <img alt="Gorengan" src="gorengan.png" />
                         <h3>Aneka Kue</h3>
-                        <ul>
+                        <ul id="anekaKueList">
                           <li>
                             <input type="checkbox" name="TahuIsi" data-name="Tahu isi" id=""/>
                             <label for="TahuIsi">Tahu Isi</label>
@@ -178,6 +180,12 @@
                             <br>
                              <input type="checkbox" name="donat" data-name="donat" id=""/>
                             <label for="donat">donat</label>
+                            <br>
+                             <input type="checkbox" name="getas" data-name="getas" id=""/>
+                            <label for="getas">getas</label>
+                            <br>
+                             <input type="checkbox" name="dadar gulung" data-name="dadar gulung" id=""/>
+                            <label for="dadar gulung">dadar gulung</label>
                           </li>
                         </ul>
                         <p></p>
@@ -203,6 +211,46 @@
                         </p>
                         <button class="btndes">O K</button>
                     </div>
+
+                    <div class="product-item">
+                      <div class="content"></div>
+                        <img alt="sayurmasak" src="sayur3.png" />
+                        <h3>Sayur Masak</h3>
+                        <ul id="sayurMasakList">
+                          <li>
+                            <input type="checkbox" name="Sayur Asem" data-name="Sayur Asem" id=""/>
+                            <label for="Sayur Asem">Sayur Asem</label>
+                            <br>
+                            <input type="checkbox" name="Sayur Sop" data-name="Sayur Sop" id=""/>
+                            <label for="Sayur Sop">Sayur Sop</label>
+                            <br>
+                            <input type="checkbox" name="Sayur Bening" data-name="Sayur Bening" id=""/>
+                            <label for="Sayur Bening">Sayur Bening</label>
+                          </li>
+                        </ul>
+                        <p></p>
+                        <p class="price">Rp10.000</p>
+                        <button id="btnmenu" class="add-to-cart">
+                            Detail
+                        </button>
+                        <div class="jumblah">
+                            <button class="minus">-</button>
+                            <input type="text" value="0" class="quantity">
+                            <button class="plus">+</button>
+                            <button class="cart" data-img="nasikuning.png">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!--box deskripsi menu-->
+                    <div class="description">
+                        <img src="sayur.png" alt="" />
+                        <h3>sayur masak</h3>
+                        <p>
+                            (penjelasan product)
+                        </p>
+                        <button class="btndes">O K</button>
+                    </div>
         </div>
       </div>
     </section>
@@ -221,6 +269,11 @@
 
   <!-- Footer Section -->
     <footer class="footer">
+        <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15956.998175777242!2d117.1617682!3d-0.9674688999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df6a99baeba80b9%3A0xb19d99ca66befb05!2sTj.%20Harapan-Jalan%20Samboja-Muara%20Jawa!5e0!3m2!1sen!2sid!4v1745917068081!5m2!1sen!2sid"
+    width="100%" height="300" style="border:2px dashed black; border-radius: 25px;" allowfullscreen=""
+    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
         <div class="container">
             <div class="footer-logo">
                 <img id="logofoot" alt="Logo from meta" src="logo.jpeg" />
@@ -332,6 +385,23 @@
                             animateImageToCart("nasikuning.png");
                         });
                     }
+                    // Tangani item "Sayur Masak" dengan checkbox
+                if (productItem.querySelector('h3').textContent.trim() === 'Sayur Masak') {
+                    const checkboxes = productItem.querySelectorAll('input[type="checkbox"]:checked');
+                    const sayurMasakPrice = parseInt(productItem.querySelector(".price").textContent.replace("Rp", "").replace(".", ""));
+
+                    checkboxes.forEach((checkbox) => {
+                        const laukName = checkbox.getAttribute("data-name");
+                        const sayurMasakItem = {
+                            imgSrc: "sayur3.png", // Gambar umum untuk sayur masak
+                            itemName: `Sayur Masak (${laukName})`, // Tambahkan nama lauk ke nama item
+                            quantity: 1,
+                            price: sayurMasakPrice,
+                        };
+                        cartItems.push(sayurMasakItem);
+                        animateImageToCart("sayur3.png");
+                    });
+                }
                 }
 
                 localStorage.setItem(CART_KEY_3, JSON.stringify(cartItems));
@@ -503,6 +573,55 @@ updateInfoDisplay();
 setInterval(updateInfoDisplay, 60000);
 </script>
 
+<script>
+  //script untuk merespon data admin
+       // --- Load Checkbox States from LocalStorage ---
+            function loadCheckboxStates(key, containerId) {
+                const data = JSON.parse(localStorage.getItem(key)) || {};
+                const container = document.getElementById(containerId);
+                const existingCheckboxes = container.querySelectorAll('input[type="checkbox"]');
+
+                // 1. Reset all existing static checkboxes to unchecked and visible first
+                existingCheckboxes.forEach(checkbox => {
+                    checkbox.checked = false; // <<< PENTING: SET KE FALSE UNTUK MEMASTIKAN TIDAK TERCENTANG
+                    checkbox.parentElement.style.display = 'block'; // Ensure it's visible by default
+                });
+
+                // 2. Hide static items if they are unchecked in localStorage (from admin panel)
+                existingCheckboxes.forEach(checkbox => {
+                    const dataName = checkbox.getAttribute('data-name');
+                    if (data[dataName] && !data[dataName].checked) {
+                        checkbox.parentElement.style.display = 'none'; // Hide if unchecked in admin
+                    }
+                });
+
+                // 3. Add any new items from localStorage that aren't in static HTML AND are checked
+                for (const itemKey in data) {
+                    const item = data[itemKey];
+                    let found = false;
+                    existingCheckboxes.forEach(checkbox => {
+                        if (checkbox.getAttribute('data-name') === item.name) {
+                            found = true;
+                        }
+                    });
+
+                    // Only add new items if they are "checked" in admin and not already present
+                    if (!found && item.checked) { 
+                        const listItem = document.createElement('li');
+                        listItem.innerHTML = `
+                            <input type="checkbox" name="${item.name}" data-name="${item.name}" id="${containerId}${item.name.replace(/\s/g, '')}Checkbox"/>
+                            <label for="${containerId}${item.name.replace(/\s/g, '')}Checkbox">${item.name}</label><br>
+                        `;
+                        container.appendChild(listItem);
+                    }
+                }
+            }
+
+            // Call this function for each category
+            loadCheckboxStates('nasiKuning', 'nasiKuningList');
+            loadCheckboxStates('anekaKue', 'anekaKueList');
+            loadCheckboxStates('sayurMasak', 'sayurMasakList');
+  </script>
 
 </body>
 </html>

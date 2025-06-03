@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Edit Produk</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+    body {
+        margin-left: 5%;
+    }
+</style>
+
+<body>
+    <header>
+        <h1>Admin Panel</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="admin.html">Edit Produk</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Edit Produk</h2>
+
+        <section>
+            <h3>Nasi Kuning</h3>
+            <form id="nasiKuningForm">
+                <div id="nasiKuningItems">
+                    <label>
+                        <input type="checkbox" id="nasiKuningAyam">
+                        <input type="text" placeholder="Nama Item" value="Ayam" id="nasiKuningAyamName">
+                        <button type="button" onclick="removeItem(this)">Hapus</button>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="nasiKuningIkan">
+                        <input type="text" placeholder="Nama Item" value="Ikan" id="nasiKuningIkanName">
+                        <button type="button" onclick="removeItem(this)">Hapus</button>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="nasiKuningTelur">
+                        <input type="text" placeholder="Nama Item" value="Telur" id="nasiKuningTelurName">
+                        <button type="button" onclick="removeItem(this)">Hapus</button>
+                    </label>
+                </div>
+                <button type="button" onclick="addNasiKuningItem()">Tambah Item Nasi Kuning</button>
+                <button type="button" onclick="saveNasiKuning()">Simpan Nasi Kuning</button>
+            </form>
+        </section>
+
+        <section>
+            <h3>Aneka Kue</h3>
+            <form id="anekaKueForm">
+                <div id="anekaKueItems">
+                    <label>
+                        <input type="checkbox" id="anekaKueTahuIsi">
+                        <input type="text" placeholder="Nama Item" value="Tahu Isi" id="anekaKueTahuIsiName">
+                        <button type="button" onclick="removeItem(this)">Hapus</button>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="anekaKueOteOte">
+                        <input type="text" placeholder="Nama Item" value="Ote-ote" id="anekaKueOteOteName">
+                        <button type="button" onclick="removeItem(this)">Hapus</button>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="anekaKueLumpia">
+                        <input type="text" placeholder="Nama Item" value="Lumpia" id="anekaKueLumpiaName">
+                        <button type="button" onclick="removeItem(this)">Hapus</button>
+                    </label>
+                </div>
+                <button type="button" onclick="addAnekaKueItem()">Tambah Item Aneka Kue</button>
+                <button type="button" onclick="saveAnekaKue()">Simpan Aneka Kue</button>
+            </form>
+        </section>
+
+        <section>
+            <h3>Sayur Masak</h3>
+            <form id="sayurMasakForm">
+                <div id="sayurMasakItems">
+                    <label>
+                        <input type="checkbox" id="sayurMasakAsem">
+                        <input type="text" placeholder="Nama Item" value="Asem" id="sayurMasakAsemName">
+                        <button type="button" onclick="removeItem(this)">Hapus</button>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="sayurMasakSop">
+                        <input type="text" placeholder="Nama Item" value="Sop" id="sayurMasakSopName">
+                        <button type="button" onclick="removeItem(this)">Hapus</button>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="sayurMasakBening">
+                        <input type="text" placeholder="Nama Item" value="Bening" id="sayurMasakBeningName">
+                        <button type="button" onclick="removeItem(this)">Hapus</button>
+                    </label>
+                </div>
+                <button type="button" onclick="addSayurMasakItem()">Tambah Item Sayur Masak</button>
+                <button type="button" onclick="saveSayurMasak()">Simpan Sayur Masak</button>
+            </form>
+        </section>
+
+        ---
+        <section>
+            <h3>Manajemen Data</h3>
+            <button type="button" onclick="clearAllData()">Bersihkan Semua Data Tersimpan</button>
+        </section>
+        ---
+
+    </main>
+
+    <footer>
+        <p>© 2025 MIHUN LEGENDA. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Fungsi untuk menyimpan data Nasi Kuning
+        function saveNasiKuning() {
+            const form = document.getElementById('nasiKuningForm');
+            const data = {};
+            const items = form.querySelectorAll('div#nasiKuningItems label');
+            items.forEach(item => {
+                const checkbox = item.querySelector('input[type="checkbox"]');
+                const nameInput = item.querySelector('input[type="text"]');
+                // Pastikan nama item tidak kosong sebelum menyimpan
+                if (nameInput.value.trim() !== "") {
+                    data[nameInput.value] = {
+                        checked: checkbox.checked,
+                        name: nameInput.value
+                    };
+                }
+            });
+            localStorage.setItem('nasiKuning', JSON.stringify(data));
+            alert('Data Nasi Kuning disimpan!');
+        }
+
+        // Fungsi untuk menyimpan data Aneka Kue
+        function saveAnekaKue() {
+            const form = document.getElementById('anekaKueForm');
+            const data = {};
+            const items = form.querySelectorAll('div#anekaKueItems label');
+            items.forEach(item => {
+                const checkbox = item.querySelector('input[type="checkbox"]');
+                const nameInput = item.querySelector('input[type="text"]');
+                 if (nameInput.value.trim() !== "") {
+                    data[nameInput.value] = {
+                        checked: checkbox.checked,
+                        name: nameInput.value
+                    };
+                }
+            });
+            localStorage.setItem('anekaKue', JSON.stringify(data));
+            alert('Data Aneka Kue disimpan!');
+        }
+
+        // Fungsi untuk menyimpan data Sayur Masak
+        function saveSayurMasak() {
+            const form = document.getElementById('sayurMasakForm');
+            const data = {};
+            const items = form.querySelectorAll('div#sayurMasakItems label');
+            items.forEach(item => {
+                const checkbox = item.querySelector('input[type="checkbox"]');
+                const nameInput = item.querySelector('input[type="text"]');
+                 if (nameInput.value.trim() !== "") {
+                    data[nameInput.value] = {
+                        checked: checkbox.checked,
+                        name: nameInput.value
+                    };
+                }
+            });
+            localStorage.setItem('sayurMasak', JSON.stringify(data));
+            alert('Data Sayur Masak disimpan!');
+        }
+
+        // Fungsi untuk menambah item baru Nasi Kuning
+        function addNasiKuningItem() {
+            const newItem = document.createElement('label');
+            newItem.innerHTML = `
+                <input type="checkbox">
+                <input type="text" placeholder="Nama Item" value="">
+                <button type="button" onclick="removeItem(this)">Hapus</button>
+            `;
+            document.getElementById('nasiKuningItems').appendChild(newItem);
+        }
+
+        // Fungsi untuk menambah item baru Aneka Kue
+        function addAnekaKueItem() {
+            const newItem = document.createElement('label');
+            newItem.innerHTML = `
+                <input type="checkbox">
+                <input type="text" placeholder="Nama Item" value="">
+                <button type="button" onclick="removeItem(this)">Hapus</button>
+            `;
+            document.getElementById('anekaKueItems').appendChild(newItem);
+        }
+
+        // Fungsi untuk menambah item baru Sayur Masak
+        function addSayurMasakItem() {
+            const newItem = document.createElement('label');
+            newItem.innerHTML = `
+                <input type="checkbox">
+                <input type="text" placeholder="Nama Item" value="">
+                <button type="button" onclick="removeItem(this)">Hapus</button>
+            `;
+            document.getElementById('sayurMasakItems').appendChild(newItem);
+        }
+
+        // Fungsi untuk menghapus item
+        function removeItem(button) {
+            const label = button.parentElement;
+            label.remove();
+        }
+
+        // Fungsi untuk membersihkan semua data dari localStorage
+        function clearAllData() {
+            if (confirm('Anda yakin ingin menghapus semua data yang tersimpan? Tindakan ini tidak dapat dibatalkan.')) {
+                localStorage.clear();
+                alert('Semua data telah dihapus!');
+                location.reload(); // Muat ulang halaman untuk menampilkan perubahan
+            }
+        }
+
+        // Fungsi untuk memuat data dari localStorage saat halaman dimuat
+        window.onload = function () {
+            const nasiKuningData = JSON.parse(localStorage.getItem('nasiKuning')) || {};
+            const anekaKueData = JSON.parse(localStorage.getItem('anekaKue')) || {};
+            const sayurMasakData = JSON.parse(localStorage.getItem('sayurMasak')) || {};
+
+            // Helper function to load items for a category
+            function loadItems(data, containerId) {
+                const container = document.getElementById(containerId);
+                // Dapatkan semua label yang sudah ada di HTML
+                const existingLabels = container.querySelectorAll('label');
+
+                // Iterasi melalui data yang dimuat dari localStorage
+                for (const key in data) {
+                    const item = data[key];
+                    let foundExisting = false;
+
+                    // Coba temukan item yang sudah ada berdasarkan nama
+                    existingLabels.forEach(label => {
+                        const nameInput = label.querySelector('input[type="text"]');
+                        if (nameInput && nameInput.value === item.name) {
+                            label.querySelector('input[type="checkbox"]').checked = item.checked;
+                            foundExisting = true;
+                        }
+                    });
+
+                    // Jika item tidak ditemukan di elemen HTML statis, buat yang baru
+                    if (!foundExisting) {
+                        const newItem = document.createElement('label');
+                        newItem.innerHTML = `
+                            <input type="checkbox" ${item.checked ? 'checked' : ''}>
+                            <input type="text" placeholder="Nama Item" value="${item.name}">
+                            <button type="button" onclick="removeItem(this)">Hapus</button>
+                        `;
+                        container.appendChild(newItem);
+                    }
+                }
+
+                // Hapus item dari DOM yang tidak ada di localStorage (jika sebelumnya dihapus oleh admin)
+                existingLabels.forEach(label => {
+                    const nameInput = label.querySelector('input[type="text"]');
+                    if (nameInput && !(nameInput.value in data)) {
+                        label.remove();
+                    }
+                });
+            }
+
+            loadItems(nasiKuningData, 'nasiKuningItems');
+            loadItems(anekaKueData, 'anekaKueItems');
+            loadItems(sayurMasakData, 'sayurMasakItems');
+        };
+    </script>
+</body>
+
+</html>

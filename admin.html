@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 
 <head>
     <meta charset="UTF-8">
@@ -10,7 +12,24 @@
 
 <style>
     body {
+        background-image: url(bg.jpg);
+        background-size: cover;
         margin-left: 5%;
+        margin-right: 5%;
+    }
+    
+    nav a {
+      text-decoration: none;
+      color: black;
+      background-color: lightgrey;
+    }
+    
+    .nasi, .kue, .sayur {
+      background-color: rgba(30, 30, 30, 12%);
+      border-radius: 10px;
+      border: 1px black solid;
+      margin-top: 10px;
+      padding: 3px;
     }
 
     label {
@@ -36,7 +55,7 @@
     <main>
         <h2>Edit Produk</h2>
 
-        <section>
+        <section class="nasi">
             <h3>Nasi Kuning</h3>
             <form id="nasiKuningForm">
                 <div id="nasiKuningItems">
@@ -56,12 +75,12 @@
                         <button type="button" onclick="removeItem(this)">Hapus</button>
                     </label>
                 </div>
-                <button type="button" onclick="addNasiKuningItem()">Tambah Item Nasi Kuning</button>
-                <button type="button" onclick="saveNasiKuning()">Simpan Nasi Kuning</button>
+                <button type="button" onclick="addNasiKuningItem()">Tambah Item</button>
+                <button type="button" onclick="saveNasiKuning()">Simpan Data</button>
             </form>
         </section>
 
-        <section>
+        <section class="kue">
             <h3>Aneka Kue</h3>
             <form id="anekaKueForm">
                 <div id="anekaKueItems">
@@ -81,12 +100,12 @@
                         <button type="button" onclick="removeItem(this)">Hapus</button>
                     </label>
                 </div>
-                <button type="button" onclick="addAnekaKueItem()">Tambah Item Aneka Kue</button>
-                <button type="button" onclick="saveAnekaKue()">Simpan Aneka Kue</button>
+                <button type="button" onclick="addAnekaKueItem()">Tambah Item</button>
+                <button type="button" onclick="saveAnekaKue()">Simpan Data</button>
             </form>
         </section>
 
-        <section>
+        <section class="sayur">
             <h3>Sayur Masak</h3>
             <form id="sayurMasakForm">
                 <div id="sayurMasakItems">
@@ -106,8 +125,8 @@
                         <button type="button" onclick="removeItem(this)">Hapus</button>
                     </label>
                 </div>
-                <button type="button" onclick="addSayurMasakItem()">Tambah Item Sayur Masak</button>
-                <button type="button" onclick="saveSayurMasak()">Simpan Sayur Masak</button>
+                <button type="button" onclick="addSayurMasakItem()">Tambah Item</button>
+                <button type="button" onclick="saveSayurMasak()">Simpan Data</button>
             </form>
         </section>
 
